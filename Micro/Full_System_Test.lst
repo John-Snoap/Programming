@@ -1,0 +1,1027 @@
+0001                         * ;John Snoap, Chris Rich, and Aubin Mukamaishimwe
+0002                         * ;Computer Systems
+0003                         * ;Full_System_Test
+0004                         
+0005                         * ;Variables													COMMENTS
+0006 00a0                    characterCount			EQU		$A0								;For our program
+0007 00a1                    currentQuadrant			EQU		$A1								;For our program
+0008 00a2                    shiftFlag			EQU		$A2								;For our program
+0009 00a3                    mode				EQU		$A3								;For our program
+0010 00b0                    bufferStart			EQU		$B0								;For our program
+0011 a000                    keyboard			EQU		$A000								;For our hardware
+0012 b000                    LCD				EQU		$B000								;For our hardware
+0013 b001                    LCDD				EQU		$B001								;For our hardware
+0014 c000                    DDRA				EQU		$C000								;For our hardware
+0015 c001                    CRA				EQU		$C001								;For our hardware
+0016 c002                    DDRB				EQU		$C002								;For our hardware
+0017 c003                    CRB				EQU		$C003								;For our hardware
+0018 9000                    bright				EQU		$9000								;For our hardware
+0019 8000                    dim				EQU		$8000								;For our hardware
+0020 0024                    stringLength			EQU		36								;The number of bits allocated for each laser string
+0021 003c                    quadrantLength			EQU		60								;The horizontal length allocated for each quadrant
+0022 e400                    LCDStart			EQU		$E400								;For our EEPROM
+0023 e450                    testPatternStart		EQU		$E450								;For our EEPROM
+0024 e500                    laserStart			EQU		$E500								;For our EEPROM
+0025 ed00                    animationStart			EQU		$ED00								;For our EEPROM
+0026                         * ;Variables end
+0027                         
+0028                         * ;Main														COMMENTS
+0029 e000                    				ORG		$E000								;Start program
+0030 e000 0e                 				CLI										;Clear the interupt flag
+0031 e001 8e 00 ff           				LDS		#$FF								;Load the stack pointer
+0032 e004 7f 00 a0           				CLR		characterCount							;Initialize characterCount
+0033 e007 7f 00 a1           				CLR		currentQuadrant							;Initialize currentQuadrant
+0034 e00a 7f 00 a2           				CLR		shiftFlag							;Initialize shiftFlag
+0035 e00d 7f 00 a3           				CLR		mode								;Initialize mode (step 1 of 2)
+0036 e010 7c 00 a3           				INC		mode								;Initialize mode (step 2 of 2)
+0037 e013 14 39 40           				BSET		$1039			%01000000				;Initialize internal A/D converter
+0038 e016 ce b0 00           				LDX		#LCD								;LCD location -> X		Initialize LCD
+0039 e019 1e 00 80 fc        				BRSET		0,X			%10000000	*			;LCD busy check
+0040 e01d 86 01              				LDAA		#$1								;Load first command
+0041 e01f b7 b0 00           				STAA		LCD								;Send first command -> LCD
+0042 e022 1e 00 80 fc        				BRSET		0,X			%10000000	*			;LCD busy check
+0043 e026 86 30              				LDAA		#$30								;Load second command
+0044 e028 b7 b0 00           				STAA		LCD								;Send second command -> LCD
+0045 e02b 1e 00 80 fc        				BRSET		0,X			%10000000	*			;LCD busy check
+0046 e02f 86 08              				LDAA		#$8								;Load third command
+0047 e031 b7 b0 00           				STAA		LCD								;Send third command -> LCD
+0048 e034 1e 00 80 fc        				BRSET		0,X			%10000000	*			;LCD busy check
+0049 e038 86 06              				LDAA		#$6								;Load fourth command
+0050 e03a b7 b0 00           				STAA		LCD								;Send fourth command -> LCD
+0051 e03d 1e 00 80 fc        				BRSET		0,X			%10000000	*			;LCD busy check
+0052 e041 86 3c              				LDAA		#$3C								;Load fifth command
+0053 e043 b7 b0 00           				STAA		LCD								;Send fifth command -> LCD
+0054 e046 1e 00 80 fc        				BRSET		0,X			%10000000	*			;LCD busy check
+0055 e04a 86 0f              				LDAA		#$F								;Load sixth command
+0056 e04c b7 b0 00           				STAA		LCD								;Send sixth command -> LCD	Initialize LCD end
+0057 e04f ce c0 01           				LDX		#CRA								;PIA CRA -> X			Initialize laser
+0058 e052 1d 00 04           				BCLR		0,X			%00000100				;Trust Watson -> PIA CRA
+0059 e055 ce c0 00           				LDX		#DDRA								;PIA DDRA -> X
+0060 e058 1c 00 ff           				BSET		0,X			$FF					;Trust Watson -> PIA DDRA
+0061 e05b ce c0 01           				LDX		#CRA								;PIA CRA -> X
+0062 e05e 1c 00 04           				BSET		0,X			%00000100				;Trust Watson -> PIA CRA
+0063 e061 ce c0 03           				LDX		#CRB								;PIA CRB -> X
+0064 e064 1d 00 04           				BCLR		0,X			%00000100				;Trust Watson -> PIA CRB
+0065 e067 ce c0 02           				LDX		#DDRB								;PIA DDRB -> X
+0066 e06a 1c 00 ff           				BSET		0,X			$FF					;Trust Watson -> PIA DDRB
+0067 e06d ce c0 03           				LDX		#CRB								;PIA CRB -> X
+0068 e070 1c 00 04           				BSET		0,X			%00000100				;Trust Watson -> PIA CRB	Initialize laser end
+0069 e073 86 20              				LDAA		#$20								;Trust Watson
+0070 e075 b7 10 30           				STAA		$1030								;Trust Watson, for delay knob
+0071 e078 96 a3              start				LDAA		mode								;Begin main loop
+0072 e07a 81 01              				CMPA		#1								;if (mode == 1)
+0073 e07c 27 fa              				BEQ		start								;Go back to start (do not use laser)
+0074 e07e 81 02              				CMPA		#2								;else if (mode == 2)
+0075 e080 27 07              				BEQ		displayCharacter						;Write letters on wall with laser
+0076 e082 81 03              				CMPA		#3								;else if (mode == 3)
+0077 e084 27 5f              				BEQ		displayTestPattern						;Display test pattern on wall with laser
+0078 e086 7e e1 1b           				JMP		displayAnimation						;else, display animation on wall with laser
+0079 e089 96 a0              displayCharacter		LDAA		characterCount							;See if there are any characters to draw
+0080 e08b 81 00              				CMPA		#0								;if (characterCount == 0)
+0081 e08d 27 06              				BEQ		characterDisplayReset						;Go to character display reset
+0082 e08f 96 a1              				LDAA		currentQuadrant							;else, determine whether or not to draw character
+0083 e091 91 a0              				CMPA		characterCount							;if (currentQuadrant != characterCount)
+0084 e093 26 05              				BNE		setPointer							;Prepare to send the character to the laser
+0085 e095 15 a1 ff           characterDisplayReset		BCLR		currentQuadrant		%11111111				;else, reset currentQuadrant and
+0086 e098 20 de              				BRA		start								;Go back to start
+0087 e09a ce 00 b0           setPointer			LDX		#bufferStart							;First of four characters -> X
+0088 e09d d6 a1              				LDAB		currentQuadrant							;currentQuadrant -> B
+0089 e09f 3a                 				ABX										;Add current quadrant to buffer start
+0090 e0a0 a6 00              				LDAA		0,X								;Desired character -> A
+0091 e0a2 c6 24              				LDAB		#stringLength							;Get laser string offset (A * 32)
+0092 e0a4 3d                 				MUL										;Laser string offset -> D
+0093 e0a5 c3 e5 00           				ADDD		#laserStart							;Laser string offset + laser start -> D
+0094 e0a8 8f                 				XGDX										;D <-> X
+0095 e0a9 a6 00              getNext				LDAA		0,X								;Get next character byte
+0096 e0ab 81 b0              				CMPA		#$B0								;if (byte == bright)
+0097 e0ad 27 1f              				BEQ		laserOn								;Turn the laser on
+0098 e0af 81 d0              				CMPA		#$D0								;else if (byte == dim)
+0099 e0b1 27 24              				BEQ		laserOff							;Turn the laser off
+0100 e0b3 81 70              				CMPA		#$70								;else if (byte == complete)
+0101 e0b5 27 29              				BEQ		currentQuadrantPlusPlus						;Letter is completed
+0102 e0b7 96 a1              				LDAA		currentQuadrant							;else, byte is an x-coordinate
+0103 e0b9 c6 3c              				LDAB		#quadrantLength							;Determine location offset for x-coordinate
+0104 e0bb 3d                 				MUL										;Location offset -> B
+0105 e0bc a6 00              				LDAA		0,X								;X-coordinate -> A
+0106 e0be 1b                 				ABA										;X-coordinate + location offset -> A
+0107 e0bf b7 c0 00           				STAA		DDRA								;Send x-coordinate -> PIA
+0108 e0c2 08                 				INX										;Prepare to send y-coordinate
+0109 e0c3 a6 00              				LDAA		0,X								;Load y-coordinate -> PIA
+0110 e0c5 b7 c0 02           				STAA		DDRB								;Send y-coordinate -> PIA
+0111 e0c8 bd e1 93           				JSR		delay								;Delay for 200 microseconds
+0112 e0cb 08                 				INX										;Position for next character byte
+0113 e0cc 20 db              				BRA		getNext								;Go to get next character byte
+0114 e0ce b7 90 00           laserOn				STAA		bright								;Send turn laser on -> PIA
+0115 e0d1 bd e1 93           				JSR		delay								;Delay for 200 microseconds
+0116 e0d4 08                 				INX										;Position for next character byte
+0117 e0d5 20 d2              				BRA		getNext								;Go to get next character byte
+0118 e0d7 b7 80 00           laserOff			STAA		dim								;Send turn laser off -> PIA
+0119 e0da bd e1 93           				JSR		delay								;Delay for 200 microseconds
+0120 e0dd 08                 				INX										;Position for next character byte
+0121 e0de 20 c9              				BRA		getNext								;Go to get next character byte
+0122 e0e0 7c 00 a1           currentQuadrantPlusPlus		INC		currentQuadrant							;currentQuadrant++
+0123 e0e3 20 a4              				BRA		displayCharacter						;Go to determine whether or not to draw character
+0124 e0e5 fc e4 50           displayTestPattern		LDD		testPatternStart						;Load test pattern start -> D
+0125 e0e8 8f                 				XGDX										;D <-> X
+0126 e0e9 a6 00              getNext1			LDAA		0,X								;Get next byte
+0127 e0eb 81 b0              				CMPA		#$B0								;if (byte == bright)
+0128 e0ed 27 17              				BEQ		laserOn1							;Turn the laser on
+0129 e0ef 81 d0              				CMPA		#$D0								;else if (byte == dim)
+0130 e0f1 27 1c              				BEQ		laserOff1							;Turn the laser off
+0131 e0f3 81 70              				CMPA		#$70								;else if (byte == complete)
+0132 e0f5 27 21              				BEQ		return								;Go to return
+0133 e0f7 b7 c0 00           				STAA		DDRA								;Send x-coordinate -> PIA
+0134 e0fa 08                 				INX										;Prepare to send y-coordinate
+0135 e0fb a6 00              				LDAA		0,X								;Load y-coordinate -> PIA
+0136 e0fd b7 c0 02           				STAA		DDRB								;Send y-coordinate -> PIA
+0137 e100 bd e1 93           				JSR		delay								;Delay for 200 microseconds
+0138 e103 08                 				INX										;Position for next byte
+0139 e104 20 e3              				BRA		getNext1							;Go to get next byte
+0140 e106 b7 90 00           laserOn1			STAA		bright								;Send turn laser on -> PIA
+0141 e109 bd e1 93           				JSR		delay								;Delay for 200 microseconds
+0142 e10c 08                 				INX										;Position for next byte
+0143 e10d 20 da              				BRA		getNext1							;Go to get next byte
+0144 e10f b7 80 00           laserOff1			STAA		dim								;Send turn laser off -> PIA
+0145 e112 bd e1 93           				JSR		delay								;Delay for 200 microseconds
+0146 e115 08                 				INX										;Position for next byte
+0147 e116 20 d1              				BRA		getNext1							;Go to get next byte
+0148 e118 7e e0 78           return				JMP		start								;Go back to start
+0149 e11b 7e e0 78           displayAnimation		JMP		start								;Go back to start
+0150                         * ;Main end
+0151                         
+0152                         * ;Interrupt Service Routine											COMMENTS
+0153 e11e 0e                 ISR				CLI										;Clear the interrupt flag
+0154 e11f b6 a0 00           				LDAA		keyboard							;Load keypress
+0155 e122 84 1f              				ANDA		#$1F								;Clear the first three bits
+0156 e124 9b a2              				ADDA		shiftFlag							;Add shift
+0157 e126 81 03              				CMPA		#%11								;if (keypress == shift && !shiftFlag)
+0158 e128 27 3f              				BEQ		shiftOn								;shiftFlag = on
+0159 e12a 81 13              				CMPA		#%10011								;else if (keypress == mode && !shiftFlag)
+0160 e12c 27 45              				BEQ		modePlusPlus							;mode++
+0161 e12e 81 23              				CMPA		#%100011							;else if (keypress == shift && shiftFlag)
+0162 e130 27 3c              				BEQ		shiftOff							;shiftFlag = off
+0163 e132 81 33              				CMPA		#%110011							;else if (keypress == mode && shiftFlag)
+0164 e134 27 4d              				BEQ		modeMinusMinus							;mode--
+0165 e136 ce 00 b0           				LDX		#bufferStart							;else, keypress is a character
+0166 e139 d6 a0              				LDAB		characterCount							;characterCount -> B
+0167 e13b 3a                 				ABX										;Add character count to buffer start
+0168 e13c a7 00              				STAA		0,X								;Keypress -> buffer
+0169 e13e ce e4 00           				LDX		#LCDStart							;Start LCD translation
+0170 e141 16                 				TAB										;Keypress -> B
+0171 e142 3a                 				ABX										;Add keypress to LCD start
+0172 e143 a6 00              				LDAA		0,X								;Finish LCD translation
+0173 e145 ce b0 00           				LDX		#LCD								;Prepare to send LCD translation to LCD
+0174 e148 1e 00 80 fc        				BRSET		0,X			%10000000	*			;LCD busy check
+0175 e14c b7 b0 01           				STAA		LCDD								;LCD translation -> LCD
+0176 e14f 7c 00 a0           				INC		characterCount							;characterCount++
+0177 e152 86 05              				LDAA		#5								;5 -> A
+0178 e154 d6 a0              				LDAB		characterCount							;characterCount -> B
+0179 e156 11                 				CBA										;if (characterCount < 5)
+0180 e157 26 0f              				BNE		done								;Go to done
+0181 e159 7f 00 a0           				CLR		characterCount							;else, characterCount = 0  Need to add clear display
+0182 e15c ce b0 00           				LDX		#LCD								;LCD location -> X		Clear LCD
+0183 e15f 1e 00 80 fc        				BRSET		0,X			%10000000	*			;LCD busy check
+0184 e163 86 01              				LDAA		#$1								;Load first command
+0185 e165 b7 b0 00           				STAA		LCD								;Send first command -> LCD
+0186 e168 3b                 done				RTI										;Return from interrupt
+0187 e169 14 a2 20           shiftOn				BSET		shiftFlag		%100000					;Shift on
+0188 e16c 20 fa              				BRA		done								;Go to done
+0189 e16e 15 a2 20           shiftOff			BCLR		shiftFlag		%100000					;Shift off
+0190 e171 20 f5              				BRA		done								;Go to done
+0191 e173 7c 00 a3           modePlusPlus			INC		mode								;mode++
+0192 e176 86 05              				LDAA		#5								;5 -> A
+0193 e178 d6 a3              				LDAB		mode								;mode -> B
+0194 e17a 11                 				CBA										;if (mode < 5)
+0195 e17b 26 eb              				BNE		done								;Go to done
+0196 e17d 86 01              				LDAA		#1								;else
+0197 e17f 97 a3              				STAA		mode								;mode = 1
+0198 e181 20 e5              				BRA		done								;Go to done
+0199 e183 7a 00 a3           modeMinusMinus			DEC		mode								;mode--
+0200 e186 86 00              				LDAA		#0								;0 -> A
+0201 e188 d6 a3              				LDAB		mode								;mode -> B
+0202 e18a 11                 				CBA										;if (mode > 0)
+0203 e18b 26 db              				BNE		done								;Go to done
+0204 e18d 86 04              				LDAA		#4								;else
+0205 e18f 97 a3              				STAA		mode								;mode = 4
+0206 e191 20 d5              				BRA		done								;Go to done
+0207                         * ;Interrupt Service Routine end
+0208                         
+0209                         * ;Subrutine delay												COMMENTS
+0210 e193 3c                 delay				PSHX										;Saves X
+0211 e194 86 64              				LDAA		#100								;100 * 50us = 5ms
+0212 e196 ce 00 07           outerLoop			LDX		#7								;Magic number for 50us
+0213 e199 09                 innerLoop			DEX										;X--
+0214 e19a 8c 00 00           				CPX		#0								;Add 4 clock cycles
+0215 e19d 26 fa              				BNE		innerLoop							;If (X != 0) go to "innerLoop"
+0216 e19f 4a                 				DECA										;A--
+0217 e1a0 26 f4              				BNE		outerLoop							;If (A != 0) go to "outerLoop"
+0218 e1a2 38                 				PULX										;Restores X
+0219 e1a3 39                 				RTS										;Return from subrutine
+0220                         * ;Subrutine delay end
+0221                         
+0222                         * ;EEPROM													COMMENTS
+0223 e400                    				ORG		LCDStart							;LCD start vector
+0224 e400 31                 				FCB		%00110001							;"1"
+0225 e401 51                 				FCB		%01010001							;"Q"
+0226 e402 41                 				FCB		%01000001							;"A"
+0227 e403 1e                 				FCB		%00011110							;Shift on
+0228 e404 32                 				FCB		%00110010							;"2"
+0229 e405 57                 				FCB		%01010111							;"W"
+0230 e406 53                 				FCB		%01010011							;"S"
+0231 e407 58                 				FCB		%01011000							;"X"
+0232 e408 33                 				FCB		%00110011							;"3"
+0233 e409 45                 				FCB		%01000101							;"E"
+0234 e40a 44                 				FCB		%01000100							;"D"
+0235 e40b 43                 				FCB		%01000011							;"C"
+0236 e40c 34                 				FCB		%00110100							;"4"
+0237 e40d 52                 				FCB		%01010010							;"R"
+0238 e40e 46                 				FCB		%01000110							;"F"
+0239 e40f 56                 				FCB		%01010110							;"V"
+0240 e410 35                 				FCB		%00110101							;"5"
+0241 e411 54                 				FCB		%01010100							;"T"
+0242 e412 47                 				FCB		%01000111							;"G"
+0243 e413 ff                 				FCB		%11111111							;Mode++
+0244 e420                    				ORG		LCDStart+32							;LCD start vector + 32
+0245 e420 36                 				FCB		%00110110							;"6"
+0246 e421 59                 				FCB		%01011001							;"Y"
+0247 e422 48                 				FCB		%01001000							;"H"
+0248 e423 20                 				FCB		%00100000							;Shift off
+0249 e424 37                 				FCB		%00110111							;"7"
+0250 e425 55                 				FCB		%01010101							;"U"
+0251 e426 4a                 				FCB		%01001010							;"J"
+0252 e427 42                 				FCB		%01000010							;"B"
+0253 e428 38                 				FCB		%00111000							;"8"
+0254 e429 49                 				FCB		%01001001							;"I"
+0255 e42a 4b                 				FCB		%01001011							;"K"
+0256 e42b 4e                 				FCB		%01001110							;"N"
+0257 e42c 39                 				FCB		%00111001							;"9"
+0258 e42d 4f                 				FCB		%01001111							;"O"
+0259 e42e 4c                 				FCB		%01001100							;"L"
+0260 e42f 4d                 				FCB		%01001101							;"M"
+0261 e430 30                 				FCB		%00110000							;"0"
+0262 e431 50                 				FCB		%01010000							;"P"
+0263 e432 5a                 				FCB		%01011010							;"Z"
+0264 e433 00                 				FCB		%00000000							;Mode--
+0265                         				
+0266 e450                    				ORG		testPatternStart						;Test pattern
+0267 e450 40                 				FCB		$40								;X
+0268 e451 ae                 				FCB		$AE								;Y
+0269 e452 a1                 				FCB		$A1								;X
+0270 e453 ad                 				FCB		$AD								;Y
+0271 e454 3c                 				FCB		$3C								;X
+0272 e455 77                 				FCB		$77								;Y
+0273 e456 a1                 				FCB		$A1								;X
+0274 e457 74                 				FCB		$74								;Y
+0275 e458 70                 				FCB		$70								;Test pattern end
+0276                         				
+0277 e500                    				ORG		0*stringLength+laserStart					;"1" laser string
+0278 e500 0d                 				FCB		$D								;X
+0279 e501 41                 				FCB		$41								;Y
+0280 e502 b0                 				FCB		$B0								;Bright
+0281 e503 1a                 				FCB		$1A								;X
+0282 e504 4e                 				FCB		$4E								;Y
+0283 e505 1a                 				FCB		$1A								;X
+0284 e506 00                 				FCB		$0								;Y
+0285 e507 d0                 				FCB		$D0								;Dim
+0286 e508 0d                 				FCB		$D								;X
+0287 e509 00                 				FCB		$0								;Y
+0288 e50a b0                 				FCB		$B0								;Bright
+0289 e50b 27                 				FCB		$27								;X
+0290 e50c 00                 				FCB		$0								;Y
+0291 e50d d0                 				FCB		$D0								;Dim
+0292 e50e 70                 				FCB		$70								;"1" laser string end
+0293 e524                    				ORG		1*stringLength+laserStart					;"Q" laser string
+0294 e524 1a                 				FCB		$1A								;X
+0295 e525 00                 				FCB		$0								;Y
+0296 e526 b0                 				FCB		$B0								;Bright
+0297 e527 0d                 				FCB		$D								;X
+0298 e528 00                 				FCB		$0								;Y
+0299 e529 00                 				FCB		$0								;X
+0300 e52a 0d                 				FCB		$D								;Y
+0301 e52b 00                 				FCB		$0								;X
+0302 e52c 41                 				FCB		$41								;Y
+0303 e52d 0d                 				FCB		$D								;X
+0304 e52e 4e                 				FCB		$4E								;Y
+0305 e52f 27                 				FCB		$27								;X
+0306 e530 4e                 				FCB		$4E								;Y
+0307 e531 34                 				FCB		$34								;X
+0308 e532 41                 				FCB		$41								;Y
+0309 e533 34                 				FCB		$34								;X
+0310 e534 1a                 				FCB		$1A								;Y
+0311 e535 1a                 				FCB		$1A								;X
+0312 e536 00                 				FCB		$0								;Y
+0313 e537 d0                 				FCB		$D0								;Dim
+0314 e538 1a                 				FCB		$1A								;X
+0315 e539 1a                 				FCB		$1A								;Y
+0316 e53a b0                 				FCB		$B0								;Bright
+0317 e53b 34                 				FCB		$34								;X
+0318 e53c 00                 				FCB		$0								;Y
+0319 e53d d0                 				FCB		$D0								;Dim
+0320 e53e 70                 				FCB		$70								;"Q" laser string end
+0321 e548                    				ORG		2*stringLength+laserStart					;"A" laser string
+0322 e548 00                 				FCB		$0								;X
+0323 e549 00                 				FCB		$0								;Y
+0324 e54a b0                 				FCB		$B0								;Bright
+0325 e54b 00                 				FCB		$0								;X
+0326 e54c 41                 				FCB		$41								;Y
+0327 e54d 0d                 				FCB		$D								;X
+0328 e54e 4e                 				FCB		$4E								;Y
+0329 e54f 27                 				FCB		$27								;X
+0330 e550 4e                 				FCB		$4E								;Y
+0331 e551 34                 				FCB		$34								;X
+0332 e552 41                 				FCB		$41								;Y
+0333 e553 34                 				FCB		$34								;X
+0334 e554 00                 				FCB		$0								;Y
+0335 e555 d0                 				FCB		$D0								;Dim
+0336 e556 00                 				FCB		$0								;X
+0337 e557 27                 				FCB		$27								;Y
+0338 e558 b0                 				FCB		$B0								;Bright
+0339 e559 34                 				FCB		$34								;X
+0340 e55a 27                 				FCB		$27								;Y
+0341 e55b d0                 				FCB		$D0								;Dim
+0342 e55c 70                 				FCB		$70								;"A" laser string end
+0343 e590                    				ORG		4*stringLength+laserStart					;"2" laser string
+0344 e590 00                 				FCB		$0								;X
+0345 e591 41                 				FCB		$41								;Y
+0346 e592 b0                 				FCB		$B0								;Bright
+0347 e593 0d                 				FCB		$D								;X
+0348 e594 4e                 				FCB		$4E								;Y
+0349 e595 27                 				FCB		$27								;X
+0350 e596 4e                 				FCB		$4E								;Y
+0351 e597 34                 				FCB		$34								;X
+0352 e598 41                 				FCB		$41								;Y
+0353 e599 34                 				FCB		$34								;X
+0354 e59a 34                 				FCB		$34								;Y
+0355 e59b 00                 				FCB		$0								;X
+0356 e59c 00                 				FCB		$0								;Y
+0357 e59d 34                 				FCB		$34								;X
+0358 e59e 00                 				FCB		$0								;Y
+0359 e59f d0                 				FCB		$D0								;Dim
+0360 e5a0 70                 				FCB		$70								;"2" laser string end
+0361 e5b4                    				ORG		5*stringLength+laserStart					;"W" laser string
+0362 e5b4 00                 				FCB		$0								;X
+0363 e5b5 4e                 				FCB		$4E								;Y
+0364 e5b6 b0                 				FCB		$B0								;Bright
+0365 e5b7 00                 				FCB		$0								;X
+0366 e5b8 0d                 				FCB		$D								;Y
+0367 e5b9 0d                 				FCB		$D								;X
+0368 e5ba 00                 				FCB		$0								;Y
+0369 e5bb 1a                 				FCB		$1A								;X
+0370 e5bc 0d                 				FCB		$D								;Y
+0371 e5bd d0                 				FCB		$D0								;Dim
+0372 e5be 1a                 				FCB		$1A								;X
+0373 e5bf 27                 				FCB		$27								;Y
+0374 e5c0 b0                 				FCB		$B0								;Bright
+0375 e5c1 1a                 				FCB		$1A								;X
+0376 e5c2 d0                 				FCB		$D0								;Y
+0377 e5c3 27                 				FCB		$27								;X
+0378 e5c4 00                 				FCB		$0								;Y
+0379 e5c5 34                 				FCB		$34								;X
+0380 e5c6 0d                 				FCB		$D								;Y
+0381 e5c7 34                 				FCB		$34								;X
+0382 e5c8 4e                 				FCB		$4E								;Y
+0383 e5c9 d0                 				FCB		$D0								;Dim
+0384 e5ca 70                 				FCB		$70								;"W" laser string end
+0385 e5d8                    				ORG		6*stringLength+laserStart					;"S" laser string
+0386 e5d8 00                 				FCB		$0								;X
+0387 e5d9 00                 				FCB		$0								;Y
+0388 e5da b0                 				FCB		$B0								;Bright
+0389 e5db 27                 				FCB		$27								;X
+0390 e5dc 00                 				FCB		$0								;Y
+0391 e5dd 34                 				FCB		$34								;X
+0392 e5de 0d                 				FCB		$D								;Y
+0393 e5df 34                 				FCB		$34								;X
+0394 e5e0 1a                 				FCB		$1A								;Y
+0395 e5e1 27                 				FCB		$27								;X
+0396 e5e2 27                 				FCB		$27								;Y
+0397 e5e3 0d                 				FCB		$D								;X
+0398 e5e4 27                 				FCB		$27								;Y
+0399 e5e5 00                 				FCB		$0								;X
+0400 e5e6 34                 				FCB		$34								;Y
+0401 e5e7 00                 				FCB		$0								;X
+0402 e5e8 41                 				FCB		$41								;Y
+0403 e5e9 0d                 				FCB		$D								;X
+0404 e5ea 4e                 				FCB		$4E								;Y
+0405 e5eb 34                 				FCB		$34								;X
+0406 e5ec 4e                 				FCB		$4E								;Y
+0407 e5ed d0                 				FCB		$D0								;Dim
+0408 e5ee 70                 				FCB		$70								;"S" laser string end
+0409 e5fc                    				ORG		7*stringLength+laserStart					;"X" laser string
+0410 e5fc 00                 				FCB		$0								;X
+0411 e5fd 00                 				FCB		$0								;Y
+0412 e5fe b0                 				FCB		$B0								;Bright
+0413 e5ff 00                 				FCB		$0								;X
+0414 e600 0d                 				FCB		$D								;Y
+0415 e601 34                 				FCB		$34								;X
+0416 e602 41                 				FCB		$41								;Y
+0417 e603 34                 				FCB		$34								;X
+0418 e604 4e                 				FCB		$4E								;Y
+0419 e605 d0                 				FCB		$D0								;Dim
+0420 e606 00                 				FCB		$0								;X
+0421 e607 4e                 				FCB		$4E								;Y
+0422 e608 b0                 				FCB		$B0								;Bright
+0423 e609 00                 				FCB		$0								;X
+0424 e60a 41                 				FCB		$41								;Y
+0425 e60b 34                 				FCB		$34								;X
+0426 e60c 0d                 				FCB		$D								;Y
+0427 e60d 34                 				FCB		$34								;X
+0428 e60e 00                 				FCB		$0								;Y
+0429 e60f d0                 				FCB		$D0								;Dim
+0430 e610 70                 				FCB		$70								;"X" laser string end
+0431 e620                    				ORG		8*stringLength+laserStart					;"3" laser string
+0432 e620 00                 				FCB		$0								;X
+0433 e621 4e                 				FCB		$4E								;Y
+0434 e622 b0                 				FCB		$B0								;Bright
+0435 e623 34                 				FCB		$34								;X
+0436 e624 4e                 				FCB		$4E								;Y
+0437 e625 1a                 				FCB		$1A								;X
+0438 e626 34                 				FCB		$34								;Y
+0439 e627 34                 				FCB		$34								;X
+0440 e628 1a                 				FCB		$1A								;Y
+0441 e629 34                 				FCB		$34								;X
+0442 e62a 0d                 				FCB		$D								;Y
+0443 e62b 27                 				FCB		$27								;X
+0444 e62c 00                 				FCB		$0								;Y
+0445 e62d 0d                 				FCB		$D								;X
+0446 e62e 00                 				FCB		$0								;Y
+0447 e62f 00                 				FCB		$0								;X
+0448 e630 0d                 				FCB		$D								;Y
+0449 e631 d0                 				FCB		$D0								;Dim
+0450 e632 70                 				FCB		$70								;"3" laser string end
+0451 e644                    				ORG		9*stringLength+laserStart					;"E" laser string
+0452 e644 34                 				FCB		$34								;X
+0453 e645 00                 				FCB		$0								;Y
+0454 e646 b0                 				FCB		$B0								;Bright
+0455 e647 00                 				FCB		$0								;X
+0456 e648 00                 				FCB		$0								;Y
+0457 e649 00                 				FCB		$0								;X
+0458 e64a 4e                 				FCB		$4E								;Y
+0459 e64b 34                 				FCB		$34								;X
+0460 e64c 4e                 				FCB		$4E								;Y
+0461 e64d d0                 				FCB		$D0								;Dim
+0462 e64e 00                 				FCB		$0								;X
+0463 e64f 27                 				FCB		$27								;Y
+0464 e650 b0                 				FCB		$B0								;Bright
+0465 e651 27                 				FCB		$27								;X
+0466 e652 27                 				FCB		$27								;Y
+0467 e653 d0                 				FCB		$D0								;Dim
+0468 e654 70                 				FCB		$70								;"E" laser string end
+0469 e668                    				ORG		10*stringLength+laserStart					;"D" laser string
+0470 e668 34                 				FCB		$34								;X
+0471 e669 0d                 				FCB		$D								;Y
+0472 e66a b0                 				FCB		$B0								;Bright
+0473 e66b 34                 				FCB		$34								;X
+0474 e66c 41                 				FCB		$41								;Y
+0475 e66d 27                 				FCB		$27								;X
+0476 e66e 4e                 				FCB		$4E								;Y
+0477 e66f 00                 				FCB		$0								;X
+0478 e670 4e                 				FCB		$4E								;Y
+0479 e671 00                 				FCB		$0								;X
+0480 e672 00                 				FCB		$0								;Y
+0481 e673 27                 				FCB		$27								;X
+0482 e674 00                 				FCB		$0								;Y
+0483 e675 34                 				FCB		$34								;X
+0484 e676 0d                 				FCB		$D								;Y
+0485 e677 d0                 				FCB		$D0								;Dim
+0486 e678 70                 				FCB		$70								;"D" laser string end
+0487 e68c                    				ORG		11*stringLength+laserStart					;"C" laser string
+0488 e68c 34                 				FCB		$34								;X
+0489 e68d 41                 				FCB		$41								;Y
+0490 e68e b0                 				FCB		$B0								;Bright
+0491 e68f 27                 				FCB		$27								;X
+0492 e690 4e                 				FCB		$4E								;Y
+0493 e691 0d                 				FCB		$D								;X
+0494 e692 4e                 				FCB		$4E								;Y
+0495 e693 00                 				FCB		$0								;X
+0496 e694 41                 				FCB		$41								;Y
+0497 e695 00                 				FCB		$0								;X
+0498 e696 0d                 				FCB		$D								;Y
+0499 e697 0d                 				FCB		$D								;X
+0500 e698 00                 				FCB		$0								;Y
+0501 e699 27                 				FCB		$27								;X
+0502 e69a 00                 				FCB		$0								;Y
+0503 e69b 34                 				FCB		$34								;X
+0504 e69c 0d                 				FCB		$D								;Y
+0505 e69d d0                 				FCB		$D0								;Dim
+0506 e69e 70                 				FCB		$70								;"C" laser string end
+0507 e6b0                    				ORG		12*stringLength+laserStart					;"4" laser string
+0508 e6b0 27                 				FCB		$27								;X
+0509 e6b1 00                 				FCB		$0								;Y
+0510 e6b2 b0                 				FCB		$B0								;Bright
+0511 e6b3 27                 				FCB		$27								;X
+0512 e6b4 4e                 				FCB		$4E								;Y
+0513 e6b5 00                 				FCB		$0								;X
+0514 e6b6 27                 				FCB		$27								;Y
+0515 e6b7 00                 				FCB		$0								;X
+0516 e6b8 1a                 				FCB		$1A								;Y
+0517 e6b9 34                 				FCB		$34								;X
+0518 e6ba 1a                 				FCB		$1A								;Y
+0519 e6bb d0                 				FCB		$D0								;Dim
+0520 e6bc 70                 				FCB		$70								;"4" laser string end
+0521 e6d4                    				ORG		13*stringLength+laserStart					;"R" laser string
+0522 e6d4 00                 				FCB		$0								;X
+0523 e6d5 00                 				FCB		$0								;Y
+0524 e6d6 b0                 				FCB		$B0								;Bright
+0525 e6d7 00                 				FCB		$0								;X
+0526 e6d8 4e                 				FCB		$4E								;Y
+0527 e6d9 27                 				FCB		$27								;X
+0528 e6da 4e                 				FCB		$4E								;Y
+0529 e6db 34                 				FCB		$34								;X
+0530 e6dc 41                 				FCB		$41								;Y
+0531 e6dd 34                 				FCB		$34								;X
+0532 e6de 34                 				FCB		$34								;Y
+0533 e6df 27                 				FCB		$27								;X
+0534 e6e0 27                 				FCB		$27								;Y
+0535 e6e1 00                 				FCB		$0								;X
+0536 e6e2 27                 				FCB		$27								;Y
+0537 e6e3 d0                 				FCB		$D0								;Dim
+0538 e6e4 0d                 				FCB		$D								;X
+0539 e6e5 27                 				FCB		$27								;Y
+0540 e6e6 b0                 				FCB		$B0								;Bright
+0541 e6e7 34                 				FCB		$34								;X
+0542 e6e8 00                 				FCB		$0								;Y
+0543 e6e9 d0                 				FCB		$D0								;Dim
+0544 e6ea 70                 				FCB		$70								;"R" laser string end
+0545 e6f8                    				ORG		14*stringLength+laserStart					;"F" laser string
+0546 e6f8 00                 				FCB		$0								;X
+0547 e6f9 00                 				FCB		$0								;Y
+0548 e6fa b0                 				FCB		$B0								;Bright
+0549 e6fb 00                 				FCB		$0								;X
+0550 e6fc 4e                 				FCB		$4E								;Y
+0551 e6fd 34                 				FCB		$34								;X
+0552 e6fe 4e                 				FCB		$4E								;Y
+0553 e6ff d0                 				FCB		$D0								;Dim
+0554 e700 00                 				FCB		$0								;X
+0555 e701 27                 				FCB		$27								;Y
+0556 e702 b0                 				FCB		$B0								;Bright
+0557 e703 27                 				FCB		$27								;X
+0558 e704 27                 				FCB		$27								;Y
+0559 e705 d0                 				FCB		$D0								;Dim
+0560 e706 70                 				FCB		$70								;"F" laser string end
+0561 e71c                    				ORG		15*stringLength+laserStart					;"V" laser string
+0562 e71c 00                 				FCB		$0								;X
+0563 e71d 4e                 				FCB		$4E								;Y
+0564 e71e b0                 				FCB		$B0								;Bright
+0565 e71f 00                 				FCB		$0								;X
+0566 e720 27                 				FCB		$27								;Y
+0567 e721 0d                 				FCB		$D								;X
+0568 e722 1a                 				FCB		$1A								;Y
+0569 e723 0d                 				FCB		$D								;X
+0570 e724 0d                 				FCB		$D								;Y
+0571 e725 1a                 				FCB		$1A								;X
+0572 e726 00                 				FCB		$0								;Y
+0573 e727 27                 				FCB		$27								;X
+0574 e728 0d                 				FCB		$D								;Y
+0575 e729 27                 				FCB		$27								;X
+0576 e72a 1a                 				FCB		$1A								;Y
+0577 e72b 34                 				FCB		$34								;X
+0578 e72c 27                 				FCB		$27								;Y
+0579 e72d 34                 				FCB		$34								;X
+0580 e72e 4e                 				FCB		$4E								;Y
+0581 e72f d0                 				FCB		$D0								;Dim
+0582 e730 70                 				FCB		$70								;"V" laser string end
+0583 e740                    				ORG		16*stringLength+laserStart					;"5" laser string
+0584 e740 00                 				FCB		$0								;X
+0585 e741 0d                 				FCB		$D								;Y
+0586 e742 b0                 				FCB		$B0								;Bright
+0587 e743 0d                 				FCB		$D								;X
+0588 e744 00                 				FCB		$0								;Y
+0589 e745 27                 				FCB		$27								;X
+0590 e746 00                 				FCB		$0								;Y
+0591 e747 34                 				FCB		$34								;X
+0592 e748 0d                 				FCB		$D								;Y
+0593 e749 34                 				FCB		$34								;X
+0594 e74a 27                 				FCB		$27								;Y
+0595 e74b 27                 				FCB		$27								;X
+0596 e74c 34                 				FCB		$34								;Y
+0597 e74d 00                 				FCB		$0								;X
+0598 e74e 34                 				FCB		$34								;Y
+0599 e74f 00                 				FCB		$0								;X
+0600 e750 4e                 				FCB		$4E								;Y
+0601 e751 34                 				FCB		$34								;X
+0602 e752 4e                 				FCB		$4E								;Y
+0603 e753 d0                 				FCB		$D0								;Dim
+0604 e754 70                 				FCB		$70								;"5" laser string end
+0605 e764                    				ORG		17*stringLength+laserStart					;"T" laser string
+0606 e764 1a                 				FCB		$1A								;X
+0607 e765 00                 				FCB		$0								;Y
+0608 e766 b0                 				FCB		$B0								;Bright
+0609 e767 1a                 				FCB		$1A								;X
+0610 e768 4e                 				FCB		$4E								;Y
+0611 e769 d0                 				FCB		$D0								;Dim
+0612 e76a 00                 				FCB		$0								;X
+0613 e76b 4e                 				FCB		$4E								;Y
+0614 e76c b0                 				FCB		$B0								;Bright
+0615 e76d 34                 				FCB		$34								;X
+0616 e76e 4e                 				FCB		$4E								;Y
+0617 e76f d0                 				FCB		$D0								;Dim
+0618 e770 70                 				FCB		$70								;"T" laser string end
+0619 e788                    				ORG		18*stringLength+laserStart					;"G" laser string
+0620 e788 1a                 				FCB		$1A								;X
+0621 e789 27                 				FCB		$27								;Y
+0622 e78a b0                 				FCB		$B0								;Bright
+0623 e78b 34                 				FCB		$34								;X
+0624 e78c 27                 				FCB		$27								;Y
+0625 e78d 34                 				FCB		$34								;X
+0626 e78e 00                 				FCB		$0								;Y
+0627 e78f 0d                 				FCB		$D								;X
+0628 e790 00                 				FCB		$0								;Y
+0629 e791 00                 				FCB		$0								;X
+0630 e792 0d                 				FCB		$D								;Y
+0631 e793 00                 				FCB		$0								;X
+0632 e794 41                 				FCB		$41								;Y
+0633 e795 0d                 				FCB		$D								;X
+0634 e796 4e                 				FCB		$4E								;Y
+0635 e797 27                 				FCB		$27								;X
+0636 e798 4e                 				FCB		$4E								;Y
+0637 e799 34                 				FCB		$34								;X
+0638 e79a 41                 				FCB		$41								;Y
+0639 e79b d0                 				FCB		$D0								;Dim
+0640 e79c 70                 				FCB		$70								;"G" laser string end
+0641 e980                    				ORG		0+32*stringLength+laserStart					;"6" laser string
+0642 e980 00                 				FCB		$0								;X
+0643 e981 27                 				FCB		$27								;Y
+0644 e982 b0                 				FCB		$B0								;Bright
+0645 e983 00                 				FCB		$0								;X
+0646 e984 0d                 				FCB		$D								;Y
+0647 e985 0d                 				FCB		$D								;X
+0648 e986 00                 				FCB		$0								;Y
+0649 e987 27                 				FCB		$27								;X
+0650 e988 00                 				FCB		$0								;Y
+0651 e989 34                 				FCB		$34								;X
+0652 e98a 0d                 				FCB		$D								;Y
+0653 e98b 34                 				FCB		$34								;X
+0654 e98c 1a                 				FCB		$1A								;Y
+0655 e98d 27                 				FCB		$27								;X
+0656 e98e 27                 				FCB		$27								;Y
+0657 e98f 00                 				FCB		$0								;X
+0658 e990 27                 				FCB		$27								;Y
+0659 e991 00                 				FCB		$0								;X
+0660 e992 34                 				FCB		$34								;Y
+0661 e993 1a                 				FCB		$1A								;X
+0662 e994 4e                 				FCB		$4E								;Y
+0663 e995 27                 				FCB		$27								;X
+0664 e996 4e                 				FCB		$4E								;Y
+0665 e997 d0                 				FCB		$D0								;Dim
+0666 e998 70                 				FCB		$70								;"6" laser string end
+0667 e9a4                    				ORG		1+32*stringLength+laserStart					;"Y" laser string
+0668 e9a4 00                 				FCB		$0								;X
+0669 e9a5 4e                 				FCB		$4E								;Y
+0670 e9a6 b0                 				FCB		$B0								;Bright
+0671 e9a7 00                 				FCB		$0								;X
+0672 e9a8 34                 				FCB		$34								;Y
+0673 e9a9 1a                 				FCB		$1A								;X
+0674 e9aa 1a                 				FCB		$1A								;Y
+0675 e9ab 1a                 				FCB		$1A								;X
+0676 e9ac 00                 				FCB		$0								;Y
+0677 e9ad d0                 				FCB		$D0								;Dim
+0678 e9ae 1a                 				FCB		$1A								;X
+0679 e9af 1a                 				FCB		$1A								;Y
+0680 e9b0 b0                 				FCB		$B0								;Bright
+0681 e9b1 34                 				FCB		$34								;X
+0682 e9b2 34                 				FCB		$34								;Y
+0683 e9b3 34                 				FCB		$34								;X
+0684 e9b4 4e                 				FCB		$4E								;Y
+0685 e9b5 d0                 				FCB		$D0								;Dim
+0686 e9b6 70                 				FCB		$70								;"Y" laser string end
+0687 e9c8                    				ORG		2+32*stringLength+laserStart					;"H" laser string
+0688 e9c8 00                 				FCB		$0								;X
+0689 e9c9 00                 				FCB		$0								;Y
+0690 e9ca b0                 				FCB		$B0								;Bright
+0691 e9cb 00                 				FCB		$0								;X
+0692 e9cc 4e                 				FCB		$4E								;Y
+0693 e9cd d0                 				FCB		$D0								;Dim
+0694 e9ce 00                 				FCB		$0								;X
+0695 e9cf 27                 				FCB		$27								;Y
+0696 e9d0 b0                 				FCB		$B0								;Bright
+0697 e9d1 34                 				FCB		$34								;X
+0698 e9d2 27                 				FCB		$27								;Y
+0699 e9d3 d0                 				FCB		$D0								;Dim
+0700 e9d4 34                 				FCB		$34								;X
+0701 e9d5 4e                 				FCB		$4E								;Y
+0702 e9d6 b0                 				FCB		$B0								;Bright
+0703 e9d7 34                 				FCB		$34								;X
+0704 e9d8 00                 				FCB		$0								;Y
+0705 e9d9 d0                 				FCB		$D0								;Dim
+0706 e9da 70                 				FCB		$70								;"H" laser string end
+0707 ea10                    				ORG		4+32*stringLength+laserStart					;"7" laser string
+0708 ea10 00                 				FCB		$0								;X
+0709 ea11 4e                 				FCB		$4E								;Y
+0710 ea12 b0                 				FCB		$B0								;Bright
+0711 ea13 34                 				FCB		$34								;X
+0712 ea14 4e                 				FCB		$4E								;Y
+0713 ea15 34                 				FCB		$34								;X
+0714 ea16 41                 				FCB		$41								;Y
+0715 ea17 0d                 				FCB		$D								;X
+0716 ea18 1a                 				FCB		$1A								;Y
+0717 ea19 0d                 				FCB		$D								;X
+0718 ea1a 00                 				FCB		$0								;Y
+0719 ea1b d0                 				FCB		$D0								;Dim
+0720 ea1c 70                 				FCB		$70								;"7" laser string end
+0721 ea34                    				ORG		5+32*stringLength+laserStart					;"U" laser string
+0722 ea34 00                 				FCB		$0								;X
+0723 ea35 4e                 				FCB		$4E								;Y
+0724 ea36 b0                 				FCB		$B0								;Bright
+0725 ea37 00                 				FCB		$0								;X
+0726 ea38 0d                 				FCB		$D								;Y
+0727 ea39 0d                 				FCB		$D								;X
+0728 ea3a 00                 				FCB		$0								;Y
+0729 ea3b 27                 				FCB		$27								;X
+0730 ea3c 00                 				FCB		$0								;Y
+0731 ea3d 34                 				FCB		$34								;X
+0732 ea3e 0d                 				FCB		$D								;Y
+0733 ea3f 34                 				FCB		$34								;X
+0734 ea40 4e                 				FCB		$4E								;Y
+0735 ea41 d0                 				FCB		$D0								;Dim
+0736 ea42 70                 				FCB		$70								;"U" laser string end
+0737 ea58                    				ORG		6+32*stringLength+laserStart					;"J" laser string
+0738 ea58 00                 				FCB		$0								;X
+0739 ea59 0d                 				FCB		$D								;Y
+0740 ea5a b0                 				FCB		$B0								;Bright
+0741 ea5b 0d                 				FCB		$D								;X
+0742 ea5c 00                 				FCB		$0								;Y
+0743 ea5d 1a                 				FCB		$1A								;X
+0744 ea5e 00                 				FCB		$0								;Y
+0745 ea5f 27                 				FCB		$27								;X
+0746 ea60 0d                 				FCB		$D								;Y
+0747 ea61 27                 				FCB		$27								;X
+0748 ea62 0d                 				FCB		$D								;Y
+0749 ea63 27                 				FCB		$27								;X
+0750 ea64 4e                 				FCB		$4E								;Y
+0751 ea65 d0                 				FCB		$D0								;Dim
+0752 ea66 1a                 				FCB		$1A								;X
+0753 ea67 4e                 				FCB		$4E								;Y
+0754 ea68 b0                 				FCB		$B0								;Bright
+0755 ea69 34                 				FCB		$34								;X
+0756 ea6a 4e                 				FCB		$4E								;Y
+0757 ea6b d0                 				FCB		$D0								;Dim
+0758 ea6c 70                 				FCB		$70								;"J" laser string end
+0759 ea7c                    				ORG		7+32*stringLength+laserStart					;"B" laser string
+0760 ea7c 00                 				FCB		$0								;X
+0761 ea7d 27                 				FCB		$27								;Y
+0762 ea7e b0                 				FCB		$B0								;Bright
+0763 ea7f 00                 				FCB		$0								;X
+0764 ea80 00                 				FCB		$0								;Y
+0765 ea81 27                 				FCB		$27								;X
+0766 ea82 00                 				FCB		$0								;Y
+0767 ea83 34                 				FCB		$34								;X
+0768 ea84 0d                 				FCB		$D								;Y
+0769 ea85 34                 				FCB		$34								;X
+0770 ea86 1a                 				FCB		$1A								;Y
+0771 ea87 27                 				FCB		$27								;X
+0772 ea88 27                 				FCB		$27								;Y
+0773 ea89 34                 				FCB		$34								;X
+0774 ea8a 34                 				FCB		$34								;Y
+0775 ea8b 34                 				FCB		$34								;X
+0776 ea8c 41                 				FCB		$41								;Y
+0777 ea8d 27                 				FCB		$27								;X
+0778 ea8e 4e                 				FCB		$4E								;Y
+0779 ea8f 00                 				FCB		$0								;X
+0780 ea90 4e                 				FCB		$4E								;Y
+0781 ea91 00                 				FCB		$0								;X
+0782 ea92 27                 				FCB		$27								;Y
+0783 ea93 27                 				FCB		$27								;X
+0784 ea94 27                 				FCB		$27								;Y
+0785 ea95 d0                 				FCB		$D0								;Dim
+0786 ea96 70                 				FCB		$70								;"B" laser string end
+0787 eaa0                    				ORG		8+32*stringLength+laserStart					;"8" laser string
+0788 eaa0 0d                 				FCB		$D								;X
+0789 eaa1 27                 				FCB		$27								;Y
+0790 eaa2 b0                 				FCB		$B0								;Bright
+0791 eaa3 00                 				FCB		$0								;X
+0792 eaa4 1a                 				FCB		$1A								;Y
+0793 eaa5 00                 				FCB		$0								;X
+0794 eaa6 0d                 				FCB		$D								;Y
+0795 eaa7 0d                 				FCB		$D								;X
+0796 eaa8 00                 				FCB		$0								;Y
+0797 eaa9 27                 				FCB		$27								;X
+0798 eaaa 00                 				FCB		$0								;Y
+0799 eaab 34                 				FCB		$34								;X
+0800 eaac 0d                 				FCB		$D								;Y
+0801 eaad 34                 				FCB		$34								;X
+0802 eaae 1a                 				FCB		$1A								;Y
+0803 eaaf 27                 				FCB		$27								;X
+0804 eab0 27                 				FCB		$27								;Y
+0805 eab1 34                 				FCB		$34								;X
+0806 eab2 34                 				FCB		$34								;Y
+0807 eab3 34                 				FCB		$34								;X
+0808 eab4 41                 				FCB		$41								;Y
+0809 eab5 27                 				FCB		$27								;X
+0810 eab6 4e                 				FCB		$4E								;Y
+0811 eab7 0d                 				FCB		$D								;X
+0812 eab8 4e                 				FCB		$4E								;Y
+0813 eab9 00                 				FCB		$0								;X
+0814 eaba 41                 				FCB		$41								;Y
+0815 eabb 00                 				FCB		$0								;X
+0816 eabc 34                 				FCB		$34								;Y
+0817 eabd 0d                 				FCB		$D								;X
+0818 eabe 27                 				FCB		$27								;Y
+0819 eabf 27                 				FCB		$27								;X
+0820 eac0 27                 				FCB		$27								;Y
+0821 eac1 d0                 				FCB		$D0								;Dim
+0822 eac2 70                 				FCB		$70								;"8" laser string end
+0823 eac4                    				ORG		9+32*stringLength+laserStart					;"I" laser string
+0824 eac4 1a                 				FCB		$1A								;X
+0825 eac5 00                 				FCB		$0								;Y
+0826 eac6 b0                 				FCB		$B0								;Bright
+0827 eac7 1a                 				FCB		$1A								;X
+0828 eac8 4e                 				FCB		$4E								;Y
+0829 eac9 d0                 				FCB		$D0								;Dim
+0830 eaca 27                 				FCB		$27								;X
+0831 eacb 4e                 				FCB		$4E								;Y
+0832 eacc b0                 				FCB		$B0								;Bright
+0833 eacd 0d                 				FCB		$D								;X
+0834 eace 4e                 				FCB		$4E								;Y
+0835 eacf d0                 				FCB		$D0								;Dim
+0836 ead0 0d                 				FCB		$D								;X
+0837 ead1 00                 				FCB		$0								;Y
+0838 ead2 b0                 				FCB		$B0								;Bright
+0839 ead3 27                 				FCB		$27								;X
+0840 ead4 00                 				FCB		$0								;Y
+0841 ead5 d0                 				FCB		$D0								;Dim
+0842 ead6 70                 				FCB		$70								;"I" laser string end
+0843 eae8                    				ORG		10+32*stringLength+laserStart					;"K" laser string
+0844 eae8 00                 				FCB		$0								;X
+0845 eae9 00                 				FCB		$0								;Y
+0846 eaea b0                 				FCB		$B0								;Bright
+0847 eaeb 00                 				FCB		$0								;X
+0848 eaec 4e                 				FCB		$4E								;Y
+0849 eaed d0                 				FCB		$D0								;Dim
+0850 eaee 34                 				FCB		$34								;X
+0851 eaef 4e                 				FCB		$4E								;Y
+0852 eaf0 b0                 				FCB		$B0								;Bright
+0853 eaf1 0d                 				FCB		$D								;X
+0854 eaf2 27                 				FCB		$27								;Y
+0855 eaf3 00                 				FCB		$0								;X
+0856 eaf4 27                 				FCB		$27								;Y
+0857 eaf5 d0                 				FCB		$D0								;Dim
+0858 eaf6 0d                 				FCB		$D								;X
+0859 eaf7 27                 				FCB		$27								;Y
+0860 eaf8 b0                 				FCB		$B0								;Bright
+0861 eaf9 34                 				FCB		$34								;X
+0862 eafa 00                 				FCB		$0								;Y
+0863 eafb d0                 				FCB		$D0								;Dim
+0864 eafc 70                 				FCB		$70								;"K" laser string end
+0865 eb0c                    				ORG		11+32*stringLength+laserStart					;"N" laser string
+0866 eb0c 00                 				FCB		$0								;X
+0867 eb0d 00                 				FCB		$0								;Y
+0868 eb0e b0                 				FCB		$B0								;Bright
+0869 eb0f 00                 				FCB		$0								;X
+0870 eb10 4e                 				FCB		$4E								;Y
+0871 eb11 d0                 				FCB		$D0								;Dim
+0872 eb12 00                 				FCB		$0								;X
+0873 eb13 41                 				FCB		$41								;Y
+0874 eb14 b0                 				FCB		$B0								;Bright
+0875 eb15 34                 				FCB		$34								;X
+0876 eb16 0d                 				FCB		$D								;Y
+0877 eb17 d0                 				FCB		$D0								;Dim
+0878 eb18 34                 				FCB		$34								;X
+0879 eb19 00                 				FCB		$0								;Y
+0880 eb1a b0                 				FCB		$B0								;Bright
+0881 eb1b 34                 				FCB		$34								;X
+0882 eb1c 4e                 				FCB		$4E								;Y
+0883 eb1d d0                 				FCB		$D0								;Dim
+0884 eb1e 70                 				FCB		$70								;"N" laser string end
+0885 eb30                    				ORG		12+32*stringLength+laserStart					;"9" laser string
+0886 eb30 0d                 				FCB		$D								;X
+0887 eb31 00                 				FCB		$0								;Y
+0888 eb32 b0                 				FCB		$B0								;Bright
+0889 eb33 1a                 				FCB		$1A								;X
+0890 eb34 00                 				FCB		$0								;Y
+0891 eb35 34                 				FCB		$34								;X
+0892 eb36 1a                 				FCB		$1A								;Y
+0893 eb37 34                 				FCB		$34								;X
+0894 eb38 41                 				FCB		$41								;Y
+0895 eb39 27                 				FCB		$27								;X
+0896 eb3a 4e                 				FCB		$4E								;Y
+0897 eb3b 0d                 				FCB		$D								;X
+0898 eb3c 4e                 				FCB		$4E								;Y
+0899 eb3d 00                 				FCB		$0								;X
+0900 eb3e 41                 				FCB		$41								;Y
+0901 eb3f 00                 				FCB		$0								;X
+0902 eb40 34                 				FCB		$34								;Y
+0903 eb41 0d                 				FCB		$D								;X
+0904 eb42 27                 				FCB		$27								;Y
+0905 eb43 34                 				FCB		$34								;X
+0906 eb44 27                 				FCB		$27								;Y
+0907 eb45 d0                 				FCB		$D0								;Dim
+0908 eb46 70                 				FCB		$70								;"9" laser string end
+0909 eb54                    				ORG		13+32*stringLength+laserStart					;"O" laser string
+0910 eb54 00                 				FCB		$0								;X
+0911 eb55 0d                 				FCB		$D								;Y
+0912 eb56 b0                 				FCB		$B0								;Bright
+0913 eb57 0d                 				FCB		$D								;X
+0914 eb58 00                 				FCB		$0								;Y
+0915 eb59 27                 				FCB		$27								;X
+0916 eb5a 00                 				FCB		$0								;Y
+0917 eb5b 34                 				FCB		$34								;X
+0918 eb5c 0d                 				FCB		$D								;Y
+0919 eb5d 34                 				FCB		$34								;X
+0920 eb5e 41                 				FCB		$41								;Y
+0921 eb5f 27                 				FCB		$27								;X
+0922 eb60 4e                 				FCB		$4E								;Y
+0923 eb61 0d                 				FCB		$D								;X
+0924 eb62 4e                 				FCB		$4E								;Y
+0925 eb63 00                 				FCB		$0								;X
+0926 eb64 41                 				FCB		$41								;Y
+0927 eb65 00                 				FCB		$0								;X
+0928 eb66 0d                 				FCB		$D								;Y
+0929 eb67 d0                 				FCB		$D0								;Dim
+0930 eb68 70                 				FCB		$70								;"O" laser string end
+0931 eb78                    				ORG		14+32*stringLength+laserStart					;"L" laser string
+0932 eb78 00                 				FCB		$0								;X
+0933 eb79 4e                 				FCB		$4E								;Y
+0934 eb7a b0                 				FCB		$B0								;Bright
+0935 eb7b 00                 				FCB		$0								;X
+0936 eb7c 00                 				FCB		$0								;Y
+0937 eb7d 34                 				FCB		$34								;X
+0938 eb7e 00                 				FCB		$0								;Y
+0939 eb7f d0                 				FCB		$D0								;Dim
+0940 eb80 70                 				FCB		$70								;"L" laser string end
+0941 eb9c                    				ORG		15+32*stringLength+laserStart					;"M" laser string
+0942 eb9c 00                 				FCB		$0								;X
+0943 eb9d 00                 				FCB		$0								;Y
+0944 eb9e b0                 				FCB		$B0								;Bright
+0945 eb9f 00                 				FCB		$0								;X
+0946 eba0 4e                 				FCB		$4E								;Y
+0947 eba1 1a                 				FCB		$1A								;X
+0948 eba2 34                 				FCB		$34								;Y
+0949 eba3 1a                 				FCB		$1A								;X
+0950 eba4 27                 				FCB		$27								;Y
+0951 eba5 d0                 				FCB		$D0								;Dim
+0952 eba6 1a                 				FCB		$1A								;X
+0953 eba7 34                 				FCB		$34								;Y
+0954 eba8 b0                 				FCB		$B0								;Bright
+0955 eba9 34                 				FCB		$34								;X
+0956 ebaa 4e                 				FCB		$4E								;Y
+0957 ebab 34                 				FCB		$34								;X
+0958 ebac 00                 				FCB		$0								;Y
+0959 ebad d0                 				FCB		$D0								;Dim
+0960 ebae 70                 				FCB		$70								;"M" laser string end
+0961 ebc0                    				ORG		16+32*stringLength+laserStart					;"0" laser string
+0962 ebc0 00                 				FCB		$0								;X
+0963 ebc1 0d                 				FCB		$D								;Y
+0964 ebc2 b0                 				FCB		$B0								;Bright
+0965 ebc3 0d                 				FCB		$D								;X
+0966 ebc4 00                 				FCB		$0								;Y
+0967 ebc5 27                 				FCB		$27								;X
+0968 ebc6 00                 				FCB		$0								;Y
+0969 ebc7 34                 				FCB		$34								;X
+0970 ebc8 00                 				FCB		$0								;Y
+0971 ebc9 34                 				FCB		$34								;X
+0972 ebca 41                 				FCB		$41								;Y
+0973 ebcb 27                 				FCB		$27								;X
+0974 ebcc 4e                 				FCB		$4E								;Y
+0975 ebcd 0d                 				FCB		$D								;X
+0976 ebce 4e                 				FCB		$4E								;Y
+0977 ebcf 00                 				FCB		$0								;X
+0978 ebd0 41                 				FCB		$41								;Y
+0979 ebd1 00                 				FCB		$0								;X
+0980 ebd2 0d                 				FCB		$D								;Y
+0981 ebd3 34                 				FCB		$34								;X
+0982 ebd4 41                 				FCB		$41								;Y
+0983 ebd5 d0                 				FCB		$D0								;Dim
+0984 ebd6 70                 				FCB		$70								;"0" laser string end
+0985 ebe4                    				ORG		17+32*stringLength+laserStart					;"P" laser string
+0986 ebe4 00                 				FCB		$0								;X
+0987 ebe5 00                 				FCB		$0								;Y
+0988 ebe6 b0                 				FCB		$B0								;Bright
+0989 ebe7 00                 				FCB		$0								;X
+0990 ebe8 4e                 				FCB		$4E								;Y
+0991 ebe9 27                 				FCB		$27								;X
+0992 ebea 4e                 				FCB		$4E								;Y
+0993 ebeb 34                 				FCB		$34								;X
+0994 ebec 41                 				FCB		$41								;Y
+0995 ebed 34                 				FCB		$34								;X
+0996 ebee 34                 				FCB		$34								;Y
+0997 ebef 27                 				FCB		$27								;X
+0998 ebf0 27                 				FCB		$27								;Y
+0999 ebf1 00                 				FCB		$0								;X
+1000 ebf2 27                 				FCB		$27								;Y
+1001 ebf3 d0                 				FCB		$D0								;Dim
+1002 ebf4 70                 				FCB		$70								;"P" laser string end
+1003 ec08                    				ORG		18+32*stringLength+laserStart					;"Z" laser string
+1004 ec08 00                 				FCB		$0								;X
+1005 ec09 4e                 				FCB		$4E								;Y
+1006 ec0a b0                 				FCB		$B0								;Bright
+1007 ec0b 34                 				FCB		$34								;X
+1008 ec0c 4e                 				FCB		$4E								;Y
+1009 ec0d 34                 				FCB		$34								;X
+1010 ec0e 41                 				FCB		$41								;Y
+1011 ec0f 00                 				FCB		$0								;X
+1012 ec10 0d                 				FCB		$D								;Y
+1013 ec11 00                 				FCB		$0								;X
+1014 ec12 00                 				FCB		$0								;Y
+1015 ec13 34                 				FCB		$34								;X
+1016 ec14 00                 				FCB		$0								;Y
+1017 ec15 d0                 				FCB		$D0								;Dim
+1018 ec16 70                 				FCB		$70								;"Z" laser string end
+1019 ed00                    				ORG		animationStart							;Animation
+1020 ed00 d0                 				FCB		$D0								;Dim
+1021 ed01 70                 				FCB		$70								;Animation end
+1022                         
+1023 fff2                    				ORG		$FFF2								;ISR vector
+1024 fff2 e1 1e              				FDB		ISR								;ISR address
+1025 fffe                    				ORG		$FFFE								;Reset vector
+1026 fffe e0 00              				FDB		$E000								;Reset address
+1027                         * ;EEPROM end  							;Reset address

@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BadIf", "BadIf\BadIf.vcxproj", "{BCEB7057-9765-4206-84FC-636D5EF71D67}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Slope", "Slope\Slope.vcxproj", "{5E60B180-F626-4A19-9526-CEF0B4DF5D81}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scores", "Scores\Scores.vcxproj", "{037FFDE6-5D49-4BB9-9362-29689C7DEC5E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pressure", "Pressure\Pressure.vcxproj", "{4A7C6CA8-2839-4A20-AF07-2C5030CBF19B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCEB7057-9765-4206-84FC-636D5EF71D67}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BCEB7057-9765-4206-84FC-636D5EF71D67}.Release|Win32.ActiveCfg = Release|Win32
+		{BCEB7057-9765-4206-84FC-636D5EF71D67}.Release|Win32.Build.0 = Release|Win32
+		{5E60B180-F626-4A19-9526-CEF0B4DF5D81}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5E60B180-F626-4A19-9526-CEF0B4DF5D81}.Release|Win32.ActiveCfg = Release|Win32
+		{5E60B180-F626-4A19-9526-CEF0B4DF5D81}.Release|Win32.Build.0 = Release|Win32
+		{037FFDE6-5D49-4BB9-9362-29689C7DEC5E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{037FFDE6-5D49-4BB9-9362-29689C7DEC5E}.Release|Win32.ActiveCfg = Release|Win32
+		{037FFDE6-5D49-4BB9-9362-29689C7DEC5E}.Release|Win32.Build.0 = Release|Win32
+		{4A7C6CA8-2839-4A20-AF07-2C5030CBF19B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4A7C6CA8-2839-4A20-AF07-2C5030CBF19B}.Release|Win32.ActiveCfg = Release|Win32
+		{4A7C6CA8-2839-4A20-AF07-2C5030CBF19B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

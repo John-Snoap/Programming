@@ -1,0 +1,33 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: power - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ANDY~1.HAR\LOCALS~1\Temp\RSP13.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/power.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\Courses.Fall.2003\Programming I\Labs Fall 03\Lab08\Lab08_Tasks\power\power.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ANDY~1.HAR\LOCALS~1\Temp\RSP13.tmp" 
+Creating temporary file "C:\DOCUME~1\ANDY~1.HAR\LOCALS~1\Temp\RSP14.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/power.pdb" /debug /machine:I386 /out:"Debug/power.exe" /pdbtype:sept 
+".\Debug\power.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\ANDY~1.HAR\LOCALS~1\Temp\RSP14.tmp"
+<h3>Output Window</h3>
+Compiling...
+power.cpp
+h:\courses.fall.2003\programming i\labs fall 03\lab08\lab08_tasks\power\power.cpp(16) : error C2065: 'power' : undeclared identifier
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+power.exe - 1 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

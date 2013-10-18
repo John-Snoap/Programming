@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bullseye", "bullseye\bullseye.vcxproj", "{3D390712-236D-4C8C-8759-D4E1462F2ED8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "checkerBoard", "checkerBoard\checkerBoard.vcxproj", "{60D6D40D-4673-4987-9E53-B0DA8C329256}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game", "game\game.vcxproj", "{3EA7E0C1-2F38-456D-BF81-F3008A4B4C9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D390712-236D-4C8C-8759-D4E1462F2ED8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3D390712-236D-4C8C-8759-D4E1462F2ED8}.Debug|Win32.Build.0 = Debug|Win32
+		{3D390712-236D-4C8C-8759-D4E1462F2ED8}.Release|Win32.ActiveCfg = Release|Win32
+		{3D390712-236D-4C8C-8759-D4E1462F2ED8}.Release|Win32.Build.0 = Release|Win32
+		{60D6D40D-4673-4987-9E53-B0DA8C329256}.Debug|Win32.ActiveCfg = Debug|Win32
+		{60D6D40D-4673-4987-9E53-B0DA8C329256}.Debug|Win32.Build.0 = Debug|Win32
+		{60D6D40D-4673-4987-9E53-B0DA8C329256}.Release|Win32.ActiveCfg = Release|Win32
+		{60D6D40D-4673-4987-9E53-B0DA8C329256}.Release|Win32.Build.0 = Release|Win32
+		{3EA7E0C1-2F38-456D-BF81-F3008A4B4C9A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3EA7E0C1-2F38-456D-BF81-F3008A4B4C9A}.Debug|Win32.Build.0 = Debug|Win32
+		{3EA7E0C1-2F38-456D-BF81-F3008A4B4C9A}.Release|Win32.ActiveCfg = Release|Win32
+		{3EA7E0C1-2F38-456D-BF81-F3008A4B4C9A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

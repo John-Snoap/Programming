@@ -1,0 +1,16 @@
+				ORG		testPatternStart						;Test pattern
+*;				FCB		$14								;X
+*;				FCB		$14								;Y
+				FCB		$79								;X
+				FCB		$81								;Y
+				FCB		$B0								;Bright
+*;				FCB		$14								;X
+*;				FCB		$F0								;Y
+*;				FCB		$DD								;X
+*;				FCB		$F0								;Y
+*;				FCB		$DC								;X
+*;				FCB		$14								;Y
+*;				FCB		$14								;X
+*;				FCB		$13								;Y
+*;				FCB		$D0								;Dim
+				FCB		$70								;Test pattern end

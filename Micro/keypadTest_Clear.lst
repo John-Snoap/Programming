@@ -1,0 +1,158 @@
+0001                         * John Snoap, Chris Rich, and Aubin Mukamaishimwe
+0002                         * Computer Systems
+0003                         * keypadTest_Clear
+0004                         
+0005                         * Variables													COMMENTS
+0006 00a0                    characterCount			EQU		$A0								For our program
+0007 00a1                    currentQuadrant			EQU		$A1								For our program
+0008 00a2                    shiftFlag			EQU		$A2								For our program
+0009 00a3                    mode				EQU		$A3								For our program
+0010 00b0                    bufferStart			EQU		$B0								For our program
+0011 a000                    keyboard			EQU		$A000								For our hardware
+0012 b000                    LCD				EQU		$B000								For our hardware
+0013 b001                    LCDD				EQU		$B001								For our hardware
+0014 e400                    LCDStart			EQU		$E400								For our EEPROM
+0015                         * Variables end
+0016                         
+0017                         * Main														COMMENTS
+0018 e000                    				ORG		$E000								Start program
+0019 e000 0e                 				CLI										Clear the interupt flag
+0020 e001 8e 00 ff           				LDS		#$FF								Load the stack pointer
+0021 e004 7f 00 a0           				CLR		characterCount							Initialize characterCount
+0022 e007 7f 00 a1           				CLR		currentQuadrant							Initialize currentQuadrant
+0023 e00a 7f 00 a2           				CLR		shiftFlag							Initialize shiftFlag
+0024 e00d 7f 00 a3           				CLR		mode								Initialize mode (step 1 of 2)
+0025 e010 7c 00 a3           				INC		mode								Initialize mode (step 2 of 2)
+0026 e013 ce b0 00           				LDX		#LCD								LCD location -> X		Initialize LCD
+0027 e016 1e 00 80 fc        				BRSET		0,X			%10000000	*			LCD busy check
+0028 e01a 86 01              				LDAA		#$1								Load first command
+0029 e01c b7 b0 00           				STAA		LCD								Send first command -> LCD
+0030 e01f 1e 00 80 fc        				BRSET		0,X			%10000000	*			LCD busy check
+0031 e023 86 30              				LDAA		#$30								Load second command
+0032 e025 b7 b0 00           				STAA		LCD								Send second command -> LCD
+0033 e028 1e 00 80 fc        				BRSET		0,X			%10000000	*			LCD busy check
+0034 e02c 86 08              				LDAA		#$8								Load third command
+0035 e02e b7 b0 00           				STAA		LCD								Send third command -> LCD
+0036 e031 1e 00 80 fc        				BRSET		0,X			%10000000	*			LCD busy check
+0037 e035 86 06              				LDAA		#$6								Load fourth command
+0038 e037 b7 b0 00           				STAA		LCD								Send fourth command -> LCD
+0039 e03a 1e 00 80 fc        				BRSET		0,X			%10000000	*			LCD busy check
+0040 e03e 86 3c              				LDAA		#$3C								Load fifth command
+0041 e040 b7 b0 00           				STAA		LCD								Send fifth command -> LCD
+0042 e043 1e 00 80 fc        				BRSET		0,X			%10000000	*			LCD busy check
+0043 e047 86 0f              				LDAA		#$F								Load sixth command
+0044 e049 b7 b0 00           				STAA		LCD								Send sixth command -> LCD	Initialize LCD end
+0045 e04c 86 55              eepromTest			LDAA		#$55								Value $55 -> A
+0046 e04e 97 00              				STAA		$00								A -> Location $00
+0047 e050 b6 f0 00           				LDAA		$F000								Value $AA -> A
+0048 e053 20 f7              				BRA		eepromTest
+0049                         * Main end
+0050                         
+0051                         * Interrupt Service Routine											COMMENTS
+0052 e055 0e                 ISR				CLI										Clear the interrupt flag
+0053 e056 b6 a0 00           				LDAA		keyboard							Load keypress
+0054 e059 84 1f              				ANDA		#$1F								Clear the first three bits
+0055 e05b 9b a2              				ADDA		shiftFlag							Add shift
+0056 e05d 81 03              				CMPA		#%11								if (keypress == shift && !shiftFlag)
+0057 e05f 27 3f              				BEQ		shiftOn								shiftFlag = on
+0058 e061 81 13              				CMPA		#%10011								else if (keypress == mode && !shiftFlag)
+0059 e063 27 45              				BEQ		modePlusPlus							mode++
+0060 e065 81 23              				CMPA		#%100011							else if (keypress == shift && shiftFlag)
+0061 e067 27 3c              				BEQ		shiftOff							shiftFlag = off
+0062 e069 81 33              				CMPA		#%110011							else if (keypress == mode && shiftFlag)
+0063 e06b 27 4d              				BEQ		modeMinusMinus							mode--
+0064 e06d ce 00 b0           				LDX		#bufferStart							else, keypress is a character
+0065 e070 d6 a0              				LDAB		characterCount							characterCount -> B
+0066 e072 3a                 				ABX										Add character count to buffer start
+0067 e073 a7 00              				STAA		0,X								Keypress -> buffer
+0068 e075 ce e4 00           				LDX		#LCDStart							Start LCD translation
+0069 e078 16                 				TAB										Keypress -> B
+0070 e079 3a                 				ABX										Add keypress to LCD start
+0071 e07a a6 00              				LDAA		0,X								Finish LCD translation
+0072 e07c ce b0 00           				LDX		#LCD								Prepare to send LCD translation to LCD
+0073 e07f 1e 00 80 fc        				BRSET		0,X			%10000000	*			LCD busy check
+0074 e083 b7 b0 01           				STAA		LCDD								LCD translation -> LCD
+0075 e086 7c 00 a0           				INC		characterCount							characterCount++
+0076 e089 86 05              				LDAA		#5								5 -> A
+0077 e08b d6 a0              				LDAB		characterCount							characterCount -> B
+0078 e08d 11                 				CBA										if (characterCount < 5)
+0079 e08e 26 0f              				BNE		done								Go to done
+0080 e090 7f 00 a0           				CLR		characterCount							else, characterCount = 0  Need to add clear display
+0081 e093 ce b0 00           				LDX		#LCD								LCD location -> X		Clear LCD
+0082 e096 1e 00 80 fc        				BRSET		0,X			%10000000	*			LCD busy check
+0083 e09a 86 01              				LDAA		#$1								Load first command
+0084 e09c b7 b0 00           				STAA		LCD								Send first command -> LCD
+0085 e09f 3b                 done				RTI										Return from interrupt
+0086 e0a0 14 a2 20           shiftOn				BSET		shiftFlag		%100000					Shift on
+0087 e0a3 20 fa              				BRA		done								Go to done
+0088 e0a5 15 a2 20           shiftOff			BCLR		shiftFlag		%100000					Shift off
+0089 e0a8 20 f5              				BRA		done								Go to done
+0090 e0aa 7c 00 a3           modePlusPlus			INC		mode								mode++
+0091 e0ad 86 05              				LDAA		#5								5 -> A
+0092 e0af d6 a3              				LDAB		mode								mode -> B
+0093 e0b1 11                 				CBA										if (mode < 5)
+0094 e0b2 26 eb              				BNE		done								Go to done
+0095 e0b4 86 01              				LDAA		#1								else
+0096 e0b6 97 a3              				STAA		mode								mode = 1
+0097 e0b8 20 e5              				BRA		done								Go to done
+0098 e0ba 7a 00 a3           modeMinusMinus			DEC		mode								mode--
+0099 e0bd 86 00              				LDAA		#0								0 -> A
+0100 e0bf d6 a3              				LDAB		mode								mode -> B
+0101 e0c1 11                 				CBA										if (mode > 0)
+0102 e0c2 26 db              				BNE		done								Go to done
+0103 e0c4 86 04              				LDAA		#4								else
+0104 e0c6 97 a3              				STAA		mode								mode = 4
+0105 e0c8 20 d5              				BRA		done								Go to done
+0106                         * Interrupt Service Routine end
+0107                         
+0108                         * EEPROM													COMMENTS
+0109 e400                    				ORG		LCDStart							LCD start vector
+0110 e400 31                 				FCB		%00110001							"1"
+0111 e401 51                 				FCB		%01010001							"Q"
+0112 e402 41                 				FCB		%01000001							"A"
+0113 e403 1e                 				FCB		%00011110							Shift on
+0114 e404 32                 				FCB		%00110010							"2"
+0115 e405 57                 				FCB		%01010111							"W"
+0116 e406 53                 				FCB		%01010011							"S"
+0117 e407 58                 				FCB		%01011000							"X"
+0118 e408 33                 				FCB		%00110011							"3"
+0119 e409 45                 				FCB		%01000101							"E"
+0120 e40a 44                 				FCB		%01000100							"D"
+0121 e40b 43                 				FCB		%01000011							"C"
+0122 e40c 34                 				FCB		%00110100							"4"
+0123 e40d 52                 				FCB		%01010010							"R"
+0124 e40e 46                 				FCB		%01000110							"F"
+0125 e40f 56                 				FCB		%01010110							"V"
+0126 e410 35                 				FCB		%00110101							"5"
+0127 e411 54                 				FCB		%01010100							"T"
+0128 e412 47                 				FCB		%01000111							"G"
+0129 e413 ff                 				FCB		%11111111							Mode++
+0130 e420                    				ORG		LCDStart+32							LCD start vector + 32
+0131 e420 36                 				FCB		%00110110							"6"
+0132 e421 59                 				FCB		%01011001							"Y"
+0133 e422 48                 				FCB		%01001000							"H"
+0134 e423 20                 				FCB		%00100000							Shift off
+0135 e424 37                 				FCB		%00110111							"7"
+0136 e425 55                 				FCB		%01010101							"U"
+0137 e426 4a                 				FCB		%01001010							"J"
+0138 e427 42                 				FCB		%01000010							"B"
+0139 e428 38                 				FCB		%00111000							"8"
+0140 e429 49                 				FCB		%01001001							"I"
+0141 e42a 4b                 				FCB		%01001011							"K"
+0142 e42b 4e                 				FCB		%01001110							"N"
+0143 e42c 39                 				FCB		%00111001							"9"
+0144 e42d 4f                 				FCB		%01001111							"O"
+0145 e42e 4c                 				FCB		%01001100							"L"
+0146 e42f 4d                 				FCB		%01001101							"M"
+0147 e430 30                 				FCB		%00110000							"0"
+0148 e431 50                 				FCB		%01010000							"P"
+0149 e432 5a                 				FCB		%01011010							"Z"
+0150 e433 00                 				FCB		%00000000							Mode--
+0151                         				
+0152 f000                    				ORG		$F000
+0153 f000 aa                 				FCB		$AA
+0154 fff2                    				ORG		$FFF2								ISR vector
+0155 fff2 e0 55              				FDB		ISR								ISR address
+0156 fffe                    				ORG		$FFFE								Reset vector
+0157 fffe e0 00              				FDB		$E000								Reset address
+0158                         * EEPROM end  								Reset address

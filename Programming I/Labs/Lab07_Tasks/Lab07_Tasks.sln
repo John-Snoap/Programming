@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cannon", "cannon\cannon.vcxproj", "{7354E79B-F831-4DA5-A0FA-284809137EED}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "power", "power\power.vcxproj", "{1C6CDE4D-1C0B-4BC1-BF42-1FACCEFF3AFE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "radians", "radians\radians.vcxproj", "{C2465F61-AD8C-4303-9A13-B2F41544F83A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7354E79B-F831-4DA5-A0FA-284809137EED}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7354E79B-F831-4DA5-A0FA-284809137EED}.Release|Win32.ActiveCfg = Release|Win32
+		{7354E79B-F831-4DA5-A0FA-284809137EED}.Release|Win32.Build.0 = Release|Win32
+		{1C6CDE4D-1C0B-4BC1-BF42-1FACCEFF3AFE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1C6CDE4D-1C0B-4BC1-BF42-1FACCEFF3AFE}.Release|Win32.ActiveCfg = Release|Win32
+		{1C6CDE4D-1C0B-4BC1-BF42-1FACCEFF3AFE}.Release|Win32.Build.0 = Release|Win32
+		{C2465F61-AD8C-4303-9A13-B2F41544F83A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C2465F61-AD8C-4303-9A13-B2F41544F83A}.Debug|Win32.Build.0 = Debug|Win32
+		{C2465F61-AD8C-4303-9A13-B2F41544F83A}.Release|Win32.ActiveCfg = Release|Win32
+		{C2465F61-AD8C-4303-9A13-B2F41544F83A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

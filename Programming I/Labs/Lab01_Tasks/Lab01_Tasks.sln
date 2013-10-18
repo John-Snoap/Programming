@@ -1,0 +1,28 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "circle", "circle\circle.vcxproj", "{791E2967-2AFE-430C-8F36-5E319BC38C77}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "crazy", "crazy\crazy.vcxproj", "{9BAD38D4-4288-479C-BA47-7CFA718515D9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "info", "info\info.vcxproj", "{2CA0233B-A599-4E82-9F1D-0547B7DC8A54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{791E2967-2AFE-430C-8F36-5E319BC38C77}.Debug|Win32.ActiveCfg = Debug|Win32
+		{791E2967-2AFE-430C-8F36-5E319BC38C77}.Release|Win32.ActiveCfg = Release|Win32
+		{791E2967-2AFE-430C-8F36-5E319BC38C77}.Release|Win32.Build.0 = Release|Win32
+		{9BAD38D4-4288-479C-BA47-7CFA718515D9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9BAD38D4-4288-479C-BA47-7CFA718515D9}.Release|Win32.ActiveCfg = Release|Win32
+		{9BAD38D4-4288-479C-BA47-7CFA718515D9}.Release|Win32.Build.0 = Release|Win32
+		{2CA0233B-A599-4E82-9F1D-0547B7DC8A54}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2CA0233B-A599-4E82-9F1D-0547B7DC8A54}.Release|Win32.ActiveCfg = Release|Win32
+		{2CA0233B-A599-4E82-9F1D-0547B7DC8A54}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

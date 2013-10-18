@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "salsa", "salsa\salsa.vcxproj", "{BDB2CA86-2F91-434E-9DE4-C0CADE1DB88F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "weather", "weather\weather.vcxproj", "{A31AB360-D3F6-4FE8-B17C-DD9BEAA3B934}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArrayStarSearch", "ArrayStarSearch\ArrayStarSearch.vcxproj", "{F6D98651-4855-4924-A4E3-8113FF205C14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDB2CA86-2F91-434E-9DE4-C0CADE1DB88F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BDB2CA86-2F91-434E-9DE4-C0CADE1DB88F}.Release|Win32.ActiveCfg = Release|Win32
+		{BDB2CA86-2F91-434E-9DE4-C0CADE1DB88F}.Release|Win32.Build.0 = Release|Win32
+		{A31AB360-D3F6-4FE8-B17C-DD9BEAA3B934}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A31AB360-D3F6-4FE8-B17C-DD9BEAA3B934}.Release|Win32.ActiveCfg = Release|Win32
+		{A31AB360-D3F6-4FE8-B17C-DD9BEAA3B934}.Release|Win32.Build.0 = Release|Win32
+		{F6D98651-4855-4924-A4E3-8113FF205C14}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F6D98651-4855-4924-A4E3-8113FF205C14}.Debug|Win32.Build.0 = Debug|Win32
+		{F6D98651-4855-4924-A4E3-8113FF205C14}.Release|Win32.ActiveCfg = Release|Win32
+		{F6D98651-4855-4924-A4E3-8113FF205C14}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

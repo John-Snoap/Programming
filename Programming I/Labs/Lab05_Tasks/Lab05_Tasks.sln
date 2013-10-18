@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "counter loop", "counter loop\counter loop.vcxproj", "{EF766375-AD04-4921-BF22-6C5561BA25F2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "no loop", "no loop\no loop.vcxproj", "{EF55B846-DDFF-4D15-8D71-34908082BCCA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stats", "stats\stats.vcxproj", "{10A9A5E0-DFF0-4D2F-BB8A-A79A2B129703}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "factorial", "factorial\factorial.vcxproj", "{A4800F8B-E243-4E40-8AC2-8C92CB5233D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF766375-AD04-4921-BF22-6C5561BA25F2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EF766375-AD04-4921-BF22-6C5561BA25F2}.Release|Win32.ActiveCfg = Release|Win32
+		{EF766375-AD04-4921-BF22-6C5561BA25F2}.Release|Win32.Build.0 = Release|Win32
+		{EF55B846-DDFF-4D15-8D71-34908082BCCA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EF55B846-DDFF-4D15-8D71-34908082BCCA}.Release|Win32.ActiveCfg = Release|Win32
+		{EF55B846-DDFF-4D15-8D71-34908082BCCA}.Release|Win32.Build.0 = Release|Win32
+		{10A9A5E0-DFF0-4D2F-BB8A-A79A2B129703}.Debug|Win32.ActiveCfg = Debug|Win32
+		{10A9A5E0-DFF0-4D2F-BB8A-A79A2B129703}.Release|Win32.ActiveCfg = Release|Win32
+		{10A9A5E0-DFF0-4D2F-BB8A-A79A2B129703}.Release|Win32.Build.0 = Release|Win32
+		{A4800F8B-E243-4E40-8AC2-8C92CB5233D3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A4800F8B-E243-4E40-8AC2-8C92CB5233D3}.Release|Win32.ActiveCfg = Release|Win32
+		{A4800F8B-E243-4E40-8AC2-8C92CB5233D3}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
