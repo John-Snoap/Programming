@@ -194,7 +194,7 @@ namespace Program_5
             if (returnString.Length > 2) // this is to remove the last ", " so there is no trailing comma
             {
                 returnString = returnString.Remove((returnString.Length - 2)); // remove the last trailing comma
-                returnString += " "; // add a spce for aesthetics
+                returnString += " "; // add a space for aesthetics
             } // end if
 
             returnString += "}"; // finish the string with a closing bracket
