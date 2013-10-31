@@ -51,21 +51,21 @@ namespace Painter
         } // end method drawCircle
 
         // redraws all of the circles
-        private void redrawCircles()
+        private void redrawCircles(Graphics graphics)
         {
             foreach (Circle circle in circles)
             {
-                using (Graphics graphics = painterPanel.CreateGraphics())
-                {
+                //using (Graphics graphics = painterPanel.CreateGraphics())
+                //{
                     circle.draw(graphics);
-                } // end using; calls graphics.Dispose()
+                //} // end using; calls graphics.Dispose()
             } // end foreach loop
         } // end method redrawCircles
 
         // should redraw all the circles so the screen can be minimized
         private void painterPanel_Paint(object sender, PaintEventArgs e)
         {
-            redrawCircles();
+            redrawCircles(e.Graphics);
         } // end event handler painterPanel_Paint
 
         // should paint when mouse button is pressed down
@@ -251,7 +251,8 @@ namespace Painter
                         } // end EOF loop
 
                         // draw all the circles on the screen for the user to see
-                        redrawCircles();
+                        //redrawCircles();
+                        painterPanel.Invalidate();
                     } // end try
                     catch (IOException)
                     {
