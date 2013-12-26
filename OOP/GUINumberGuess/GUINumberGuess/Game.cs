@@ -14,7 +14,7 @@ namespace NumberGame
 {
     class Game
     {
-        private const int MAX = 100; // the max value (inclusive) the game will play
+        private const int MAX = 10000; // the max value (inclusive) the game will play
         private const int MIN = 1; // the min value (inclusive) the game will play
         private int myNumber; // the games random number
         private int guessCount; // the current guess count

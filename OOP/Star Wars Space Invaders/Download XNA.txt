@@ -1,0 +1,4 @@
+http://www.microsoft.com/en-us/download/details.aspx?id=27599
+
+Full XNA Documentation:
+http://msdn.microsoft.com/en-us/library/bb203894(v=xnagamestudio.40).aspx

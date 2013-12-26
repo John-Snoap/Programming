@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Star_Wars_Space_Invaders.BobaFettsSlave_I" Collapsed="true">
+    <Position X="0.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAIAAAIEIAAAgAAAAAAAAAAAEAQCAAAQAIAAAAAAQA=</HashCode>
+      <FileName>BobaFettsSlave_I.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.BossLevelBobaFett" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BossLevelBobaFett.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.BossLevelDarthVader" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BossLevelDarthVader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.DarthVadersTieAdvancedx1" Collapsed="true">
+    <Position X="3" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAIAIAAAgAAAACAAAAAAEAQAAAAQAIAAAAAAAA=</HashCode>
+      <FileName>DarthVadersTieAdvancedx1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.EnemyBoss" Collapsed="true">
+    <Position X="1.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAIAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>EnemyBoss.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.EnemyFighter" Collapsed="true">
+    <Position X="7.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>EnemyFighter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.EnemyLaser" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EnemyLaser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.EnemySpaceShip" Collapsed="true">
+    <Position X="5.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAYAoAAAwAAAAIAAAAAAAAAACAAAAAAAAAAAQA=</HashCode>
+      <FileName>EnemySpaceShip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.Form1" Collapsed="true">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IABAgwARCDoQEhAAAECBCAAyAAEAIJwAAABAARQAAAE=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.FormSettings" Collapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAABSAACAAAAACQACACCAAAAMAAACABAAAAAAA=</HashCode>
+      <FileName>FormSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.Laser" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAgAgAAIAIAAAAAAQACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Laser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.Level" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAARAAAAAAAAAQgAAAABAAAEAAAAAAAAAAAAAAABAIA=</HashCode>
+      <FileName>Level.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.Level1" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Level1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.Level2" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Level2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.Level3" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Level3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.Level12" Collapsed="true">
+    <Position X="12" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Level12.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.PlayerLaser" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAgAAAAAAAAAAAAAQAAAAQAIAAAAAAAA=</HashCode>
+      <FileName>PlayerLaser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.PlayerSpaceShip" Collapsed="true">
+    <Position X="12" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAoAAAgIAAACAAAAIAAAQAAAAQAIAAAAAAAA=</HashCode>
+      <FileName>PlayerSpaceShip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.Program" Collapsed="true">
+    <Position X="18" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.Slave_I_Laser" Collapsed="true">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAQAAAAQAIAAAAAAAA=</HashCode>
+      <FileName>Slave_I_Laser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.SpaceShip" Collapsed="true">
+    <Position X="6.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAoAAAEAAgABFgAgAAAAIAAACAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>SpaceShip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.StarWarsSpaceInvaders" Collapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUkEUABMBqYQwgAFVAAaAEAIAEMIYkoBSAAAQAAKIQ=</HashCode>
+      <FileName>StarWarsSpaceInvaders.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.TieBomb" Collapsed="true">
+    <Position X="5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAQgAAAAAAAAAAAAAQAAAAQAYAAAAAAAA=</HashCode>
+      <FileName>TieBomb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.TieBomber" Collapsed="true">
+    <Position X="9.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAIAIAAAgAAAACAAAAAAEAQAAAAQAIAAAAAAAA=</HashCode>
+      <FileName>TieBomber.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.TieFighter" Collapsed="true">
+    <Position X="5.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAIAIAAAgAAAACAAAAAAEAQAAAAQAIAAAAAAAA=</HashCode>
+      <FileName>TieFighter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.TieInterceptor" Collapsed="true">
+    <Position X="7.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAIAIAAAgAAAACAAAAAAEAQAAAAQAIAAAAAAgA=</HashCode>
+      <FileName>TieInterceptor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.TieLaser" Collapsed="true">
+    <Position X="2.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAQAAAAQAIAAAAAAAA=</HashCode>
+      <FileName>TieLaser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.ObjectExtensions" Collapsed="true">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAACAgAAAAACAAAAAgEAAAA=</HashCode>
+      <FileName>ObjectExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.ReferenceEqualityComparer" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObjectExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.ArrayExtensions.ArrayExtensions" Collapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObjectExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.ArrayExtensions.ArrayTraverse" Collapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAggAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>ObjectExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.BossLevelSSS" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BossLevelSSS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.ExecutorClassStarDestroyer" Collapsed="true">
+    <Position X="0.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIEIAAAgAAAAAAAAAAAEAQAAAAQAIAAAAAAAA=</HashCode>
+      <FileName>ExecutorClassStarDestroyer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.GameObject" Collapsed="true">
+    <Position X="10.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>GameObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Star_Wars_Space_Invaders.Texture2DData" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAQAgAQAAIAEAAAAAA=</HashCode>
+      <FileName>Texture2DData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

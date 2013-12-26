@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Star Wars Space Invaders", "Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders.csproj", "{B01CF1BF-8BD4-4FD9-8327-277E12817045}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "Star Wars Space InvadersContent", "Star Wars Space Invaders\Star Wars Space InvadersContent\Star Wars Space InvadersContent.contentproj", "{8CD901A4-DD8D-4F83-80F8-BA0A4BF5CFB4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B01CF1BF-8BD4-4FD9-8327-277E12817045}.Debug|x86.ActiveCfg = Debug|x86
+		{B01CF1BF-8BD4-4FD9-8327-277E12817045}.Debug|x86.Build.0 = Debug|x86
+		{B01CF1BF-8BD4-4FD9-8327-277E12817045}.Release|x86.ActiveCfg = Release|x86
+		{B01CF1BF-8BD4-4FD9-8327-277E12817045}.Release|x86.Build.0 = Release|x86
+		{8CD901A4-DD8D-4F83-80F8-BA0A4BF5CFB4}.Debug|x86.ActiveCfg = Debug|x86
+		{8CD901A4-DD8D-4F83-80F8-BA0A4BF5CFB4}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -93,7 +93,7 @@
             this.mskTxtUserGuess.AllowPromptAsInput = false;
             this.mskTxtUserGuess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mskTxtUserGuess.Location = new System.Drawing.Point(163, 147);
-            this.mskTxtUserGuess.Mask = "000";
+            this.mskTxtUserGuess.Mask = "00000";
             this.mskTxtUserGuess.Name = "mskTxtUserGuess";
             this.mskTxtUserGuess.PromptChar = ' ';
             this.mskTxtUserGuess.Size = new System.Drawing.Size(100, 26);

@@ -16,6 +16,19 @@ namespace InClassArray
     {
         static void Main(string[] args) // DummyClass Test
         {
+            DummyClass dumb = new DummyClass();
+            DoIt();
+
+            dumb.DoItAgain();
         } // end Main DummyClass Test
+
+        public static void DoIt()
+        {
+        } // end method DoIt
+
+        public void DoItAgain()
+        {
+
+        } // end method DoItAgain
     } // end DummyClass
 } // end namespace InClassArray

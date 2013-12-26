@@ -1,5 +1,8 @@
 ﻿/* John Snoap
+ * Daniel Griffin
+ * Joshua Mullen
  * Assignment 6
+ * try catch practice
  * Drawing
  * Object Oriented Programming
  * October 23, 2013
@@ -172,13 +175,14 @@ namespace Painter
                         } // end foreach loop
 
                         fileWriter.Flush(); // force the program to actually write the data
+                        fileWriter.Close(); // close the stream writer
                     } // end try
 
-                    // handle exception if there is a problem opening the file
+                    // handle exception if there is a problem saving the file
                     catch (IOException)
                     {
                         // notify user if file does not exist
-                        MessageBox.Show("Error opening file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error saving file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     } // end catch
                 } // end else
             } // end if
@@ -196,7 +200,7 @@ namespace Painter
                 fileName = fileChooser.FileName; // get specified name
             } // end using
 
-            // ensure that suer clicked "OK"
+            // ensure that user clicked "OK"
             if (result == DialogResult.OK)
             {
                 //ClearTextBox();
@@ -210,6 +214,9 @@ namespace Painter
                 {
                     try
                     {
+                        // create temp cirles
+                        List<Circle> tempCircles = new List<Circle>(); // the list of temporary paint circles
+
                         // create FileStream to obtain read acess to file
                         FileStream input = new FileStream(fileName, FileMode.Open, FileAccess.Read);
 
@@ -220,14 +227,14 @@ namespace Painter
                         input.Seek(0, SeekOrigin.Begin);
 
                         // forget about any circles already in the painting panel
-                        circles.Clear(); // forget about old circles
-                        painterPanel.Refresh(); // clear the painter panel
+                        //circles.Clear(); // forget about old circles
+                        //painterPanel.Refresh(); // clear the painter panel
 
                         // traverse file until end of file
                         while (!fileReader.EndOfStream)
                         {
                             string[] inputFields; // stores individual pieces of data
-                            Circle circle; // store each circle as file is read
+                            //Circle circle; // store each circle as file is read
                             float size; // store each circle's size
                             float x; // store each circle's x position
                             float y; // store each circle's y position
@@ -243,21 +250,40 @@ namespace Painter
                             y = Convert.ToInt32(inputFields[2]); // get the y coord
                             color = Convert.ToInt32(inputFields[3]); // get the color
 
-                            // create circle from input
-                            circle = new Circle(size, x, y, color);
+
+
+                            // create circle from input and add it to the temporary list
+                            tempCircles.Add(new Circle(size, x, y, color));// = new Circle(size, x, y, color);
 
                             // add circle to the linked list
-                            circles.Add(circle);
+                            //circles.Add(circle);
                         } // end EOF loop
 
                         // draw all the circles on the screen for the user to see
                         //redrawCircles();
-                        painterPanel.Invalidate();
+                        // forget about any circles already in the painting panel
+                        circles.Clear(); // forget about old circles
+                        circles = tempCircles;
+                        painterPanel.Refresh(); // clear the painter panel
+
+                        //painterPanel.Invalidate();
                     } // end try
                     catch (IOException)
                     {
                         MessageBox.Show("Error reading from file", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     } // end catch
+                    catch (FormatException)
+                    {
+                        MessageBox.Show("You opened the wrong type of file!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    } //end catch
+                    catch (IndexOutOfRangeException)
+                    {
+                        MessageBox.Show("Your file has been corrupted!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    } //end catch
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Some other error has occured!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    } //end catch
                 } // end else
             } // end if
         } // end event halder openToolStripMenuItem_Click

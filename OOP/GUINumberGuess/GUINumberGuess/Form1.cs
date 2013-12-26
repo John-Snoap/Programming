@@ -32,7 +32,7 @@ namespace GUINumberGuess
 
         private void startOfGameMessage()
         {
-            lblFirstHint.Text = "I am thinking of an integer between 1 and 100.\nCan you guess my number?";
+            lblFirstHint.Text = "I am thinking of an integer between 1 and 10,000.\nCan you guess my number?";
             lblSecondHint.Text = "";
             this.BackColor = Color.FromArgb(246, 234, 219); // This should make an off-white color
             btnPlayAgain.Enabled = false; // disable play again button
