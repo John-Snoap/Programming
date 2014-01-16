@@ -1,0 +1,20 @@
+﻿Build started 11/4/2010 6:01:37 PM.
+     1>Project "C:\Users\john.snoap\Documents\Classes\Programming I\Visual Studio 2010\Projects\Star Search\Star Search\Star Search.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\Star Search.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       ManifestResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+       Manifest:
+         All outputs are up-to-date.
+       FinalizeBuildStatus:
+         Deleting file "Debug\Star Search.unsuccessfulbuild".
+         Touching "Debug\Star Search.lastbuildstate".
+     1>Done Building Project "C:\Users\john.snoap\Documents\Classes\Programming I\Visual Studio 2010\Projects\Star Search\Star Search\Star Search.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.07

@@ -1,0 +1,34 @@
+﻿Build started 11/4/2010 3:25:59 PM.
+     1>Project "C:\Users\john.snoap\Documents\Classes\Programming I\Visual Studio 2010\Labs\Lab07_Tasks\cannon\cannon.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\cannon.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr:oldSyntax /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _VC80_UPGRADE=0x0710 /D _MBCS /Gm- /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt cannon.cpp /clr:nostdlib 
+     1>cl : Command line warning D9035: option 'clr:oldsyntax' has been deprecated and will be removed in a future release
+         cannon.cpp
+     1>cannon.cpp(71): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>cannon.cpp(72): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>cannon.cpp(86): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>cannon.cpp(87): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+       CoreResGen:
+         All outputs are up-to-date.
+       ResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\john.snoap\Documents\Classes\Programming I\Visual Studio 2010\Labs\Lab07_Tasks\Debug\cannon.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /ASSEMBLYRESOURCE:"Debug\cannon.Form1.resources,Debug\cannon.Form1.resources" /MANIFEST /ManifestFile:"Debug\cannon.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\john.snoap\Documents\Classes\Programming I\Visual Studio 2010\Labs\Lab07_Tasks\Debug\cannon.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE:NO /FIXED:NO /MACHINE:X86 Debug\app.res
+         Debug\AssemblyInfo.obj
+         Debug\cannon.obj
+         Debug\Form1.obj
+         Debug\stdafx.obj
+         cannon.vcxproj -> C:\Users\john.snoap\Documents\Classes\Programming I\Visual Studio 2010\Labs\Lab07_Tasks\Debug\cannon.exe
+       Manifest:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\john.snoap\Documents\Classes\Programming I\Visual Studio 2010\Labs\Lab07_Tasks\Debug\cannon.exe;#1" /manifest Debug\cannon.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Debug\cannon.unsuccessfulbuild".
+         Touching "Debug\cannon.lastbuildstate".
+     1>Done Building Project "C:\Users\john.snoap\Documents\Classes\Programming I\Visual Studio 2010\Labs\Lab07_Tasks\cannon\cannon.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.52

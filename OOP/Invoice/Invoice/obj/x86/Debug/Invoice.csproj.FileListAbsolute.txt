@@ -1,0 +1,5 @@
+c:\users\john.snoap\documents\visual studio 2010\Projects\Invoice\Invoice\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\john.snoap\documents\visual studio 2010\Projects\Invoice\Invoice\bin\Debug\Invoice.exe
+c:\users\john.snoap\documents\visual studio 2010\Projects\Invoice\Invoice\bin\Debug\Invoice.pdb
+c:\users\john.snoap\documents\visual studio 2010\Projects\Invoice\Invoice\obj\x86\Debug\Invoice.exe
+c:\users\john.snoap\documents\visual studio 2010\Projects\Invoice\Invoice\obj\x86\Debug\Invoice.pdb

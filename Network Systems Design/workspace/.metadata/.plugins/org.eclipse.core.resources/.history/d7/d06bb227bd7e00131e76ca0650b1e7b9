@@ -1,0 +1,5 @@
+package john.snoap.router.support;
+
+public class Factory {
+
+}

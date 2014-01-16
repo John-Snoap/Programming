@@ -1,0 +1,13 @@
+Content\Darth Vader's TIE Advanced x1.xnb
+Content\Double Green Laser.xnb
+Content\Double Red Laser.xnb
+Content\Executor Class Star Destroyer.xnb
+Content\Imperial Class Star Destroyer.xnb
+Content\Millennium Falcon.xnb
+Content\Single Red Laser.xnb
+Content\Slave I.xnb
+Content\Stars.xnb
+Content\TIE Bomber.xnb
+Content\TIE Fighter.xnb
+Content\TIE Interceptor.xnb
+Content\TIE Bomb.xnb

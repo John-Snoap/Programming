@@ -1,0 +1,5 @@
+c:\users\john.snoap\documents\visual studio 2010\Projects\NumberGame\NumberGame\bin\Debug\NumberGame.exe
+c:\users\john.snoap\documents\visual studio 2010\Projects\NumberGame\NumberGame\bin\Debug\NumberGame.pdb
+c:\users\john.snoap\documents\visual studio 2010\Projects\NumberGame\NumberGame\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\john.snoap\documents\visual studio 2010\Projects\NumberGame\NumberGame\obj\x86\Debug\NumberGame.exe
+c:\users\john.snoap\documents\visual studio 2010\Projects\NumberGame\NumberGame\obj\x86\Debug\NumberGame.pdb

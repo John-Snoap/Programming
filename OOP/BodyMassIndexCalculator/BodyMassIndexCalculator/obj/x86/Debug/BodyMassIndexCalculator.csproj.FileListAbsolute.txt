@@ -1,0 +1,5 @@
+c:\users\john.snoap\documents\visual studio 2010\Projects\BodyMassIndexCalculator\BodyMassIndexCalculator\bin\Debug\BodyMassIndexCalculator.exe
+c:\users\john.snoap\documents\visual studio 2010\Projects\BodyMassIndexCalculator\BodyMassIndexCalculator\bin\Debug\BodyMassIndexCalculator.pdb
+c:\users\john.snoap\documents\visual studio 2010\Projects\BodyMassIndexCalculator\BodyMassIndexCalculator\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\john.snoap\documents\visual studio 2010\Projects\BodyMassIndexCalculator\BodyMassIndexCalculator\obj\x86\Debug\BodyMassIndexCalculator.exe
+c:\users\john.snoap\documents\visual studio 2010\Projects\BodyMassIndexCalculator\BodyMassIndexCalculator\obj\x86\Debug\BodyMassIndexCalculator.pdb

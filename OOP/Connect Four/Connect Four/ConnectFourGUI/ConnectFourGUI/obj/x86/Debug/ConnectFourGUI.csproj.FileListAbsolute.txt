@@ -1,0 +1,8 @@
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Connect Four\Connect Four\ConnectFourGUI\ConnectFourGUI\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Connect Four\Connect Four\ConnectFourGUI\ConnectFourGUI\obj\x86\Debug\ConnectFourGUI.Properties.Resources.resources
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Connect Four\Connect Four\ConnectFourGUI\ConnectFourGUI\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Connect Four\Connect Four\ConnectFourGUI\ConnectFourGUI\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Connect Four\Connect Four\ConnectFourGUI\ConnectFourGUI\bin\Debug\ConnectFourGUI.exe
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Connect Four\Connect Four\ConnectFourGUI\ConnectFourGUI\bin\Debug\ConnectFourGUI.pdb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Connect Four\Connect Four\ConnectFourGUI\ConnectFourGUI\obj\x86\Debug\ConnectFourGUI.exe
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Connect Four\Connect Four\ConnectFourGUI\ConnectFourGUI\obj\x86\Debug\ConnectFourGUI.pdb

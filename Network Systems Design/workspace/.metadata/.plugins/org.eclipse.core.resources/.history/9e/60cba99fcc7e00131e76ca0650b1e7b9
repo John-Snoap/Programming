@@ -1,0 +1,58 @@
+package john.snoap.router.support;
+
+import android.app.Activity;
+import android.content.Context;
+import android.widget.Toast;
+
+/**
+ * class UIManager
+ * @author john.snoap
+ */
+public class UIManager
+{
+	// private variables
+	private Factory factory;
+	private Activity parentActivity;
+	private Context context;
+	// end private variables
+	
+	// getters and setters
+	public UIManager GetUIManager()
+	{
+		return this;
+	} // end getter GetUIManager
+	// end getters and setters
+	
+	// constructors
+	// default constructor
+	public UIManager(Factory myFactory)
+	{
+		// I am only doing the below line of code so I do not re-write code in this class.
+		// In most of our classes calling UpdateObjectReferences in the constructor
+		// will not be a good way for us to do things because we will need a two part
+		// birth process.
+		UpdateObjectReferences(myFactory);
+		// Maybe I should only pass the constructor an Activity.
+		// Then I would be forced to call UpdateObjectReferences later.
+		parentActivity = factory.GetParentActivityReference();
+		context = parentActivity.getBaseContext();
+	} // end default constructor
+	// end constructors
+	
+	// public methods
+	public void UpdateObjectReferences(Factory myFactory)
+	{
+		factory = myFactory;
+	} // end public method GetObjectReferences
+	
+	/**
+	 * raiseToast
+	 * message : String to display
+	 * @param message
+	 */
+	public void raiseToast(String message)
+	{
+		Toast.makeText(context,  message,  Toast.LENGTH_LONG).show();
+	} // end public method raiseToast
+	// end public methods
+} // end class UIManager
