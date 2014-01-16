@@ -1,0 +1,25 @@
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Content\Darth Vader's TIE Advanced x1.xnb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Content\Double Green Laser.xnb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Content\Double Red Laser.xnb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Content\Executor Class Star Destroyer.xnb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Content\Imperial Class Star Destroyer.xnb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Content\Millennium Falcon.xnb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Content\Single Red Laser.xnb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Content\Slave I.xnb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Content\Stars.xnb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Content\TIE Bomber.xnb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Content\TIE Fighter.xnb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Content\TIE Interceptor.xnb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Content\TIE Bomb.xnb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Star Wars Space Invaders.exe
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Star Wars Space Invaders.pdb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\obj\x86\Debug\Star_Wars_Space_Invaders.Form1.resources
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\obj\x86\Debug\Star_Wars_Space_Invaders.FormSettings.resources
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\obj\x86\Debug\Star Wars Space Invaders.csproj.GenerateResource.Cache
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\obj\x86\Debug\Star Wars Space Invaders.exe
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\obj\x86\Debug\Star Wars Space Invaders.pdb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Star Wars Space Invaders.exe.manifest
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\bin\x86\Debug\Star Wars Space Invaders.application
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\obj\x86\Debug\Star Wars Space Invaders.exe.manifest
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\Star Wars Space Invaders\Star Wars Space Invaders\Star Wars Space Invaders\obj\x86\Debug\Star Wars Space Invaders.application

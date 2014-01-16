@@ -1,0 +1,2 @@
+c:\users\andy.harbert\documents\visual studio 2010\Projects\xnaDemo\xnaDemo\xnaDemoContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemoContent\obj\x86\Debug\xnaDemoContent.contentprojResolveAssemblyReference.cache

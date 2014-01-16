@@ -1,0 +1,87 @@
+﻿Build started 11/16/2012 8:05:20 AM.
+     1>Project "C:\Users\andy.harbert\Documents\Local Courses\Prog1\Lab11_Tasks\Lab11_Tasks\checkerBoard\checkerBoard.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Release\checkerBoard.unsuccessfulbuild".
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\andy.harbert\Documents\Local Courses\Prog1\Lab11_Tasks\Lab11_Tasks\Release\checkerBoard.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\checkerBoard.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\andy.harbert\Documents\Local Courses\Prog1\Lab11_Tasks\Lab11_Tasks\Release\checkerBoard.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\andy.harbert\Documents\Local Courses\Prog1\Lab11_Tasks\Lab11_Tasks\Release\checkerBoard.lib" /MACHINE:X86 Release\checkerboard.obj
+     1>core.lib(DBDLLExtCalls.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>core.lib(RenderList.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>display.lib(CGfxC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>file.lib(CFileC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>sprites.lib(CSpritesC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>sprites.lib(CSpriteManagerC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>image.lib(CImageC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>light.lib(CLightC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>camera.lib(CCameraC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(CObjectsC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(CommonC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(DBOFormat.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(CCollision.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(CObjectManagerC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(CPositionC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(Universe.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(CSG.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(cLightMaps.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(NVMeshMenderD3DX.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(Collision.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(CBSPTree.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(CPortals.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(CompilerTypes.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(CCompiler.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>basic3D.lib(ProcessHSR.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>world.lib(CBSPFile.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>world.lib(Patch.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>particles.lib(CParticleC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>particles.lib(CParticleManagerC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>particles.lib(CSnowC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>particles.lib(CBaseParticleC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>memblocks.lib(CMemblocks.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>multiplayer.lib(CMultiplayerC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>multiplayer.lib(CNetwork.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>multiplayer.lib(NetQueue.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>system.lib(CSystemC.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>system.lib(dxdiaginfo.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>convx.lib(ConvX.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>convmd2.lib(ConvMD2.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>convmd3.lib(ConvMD3.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>convmdl.lib(ConvMDL.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>LIBCMTD.lib(dbghook.obj) : error LNK2005: __crt_debugger_hook already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(sprintf.obj) : error LNK2005: _sprintf already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(wcstombs.obj) : error LNK2005: _wcstombs already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(winxfltr.obj) : error LNK2005: __XcptFilter already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(vswprint.obj) : error LNK2005: __vswprintf already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(crt0dat.obj) : error LNK2005: _exit already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(crt0dat.obj) : error LNK2005: __exit already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(crt0dat.obj) : error LNK2005: __cexit already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(crt0dat.obj) : error LNK2005: __amsg_exit already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(crt0dat.obj) : error LNK2005: __initterm_e already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(mlock.obj) : error LNK2005: __lock already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(mlock.obj) : error LNK2005: __unlock already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(vsprintf.obj) : error LNK2005: _vsprintf already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(setlocal.obj) : error LNK2005: __configthreadlocale already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(printf.obj) : error LNK2005: _printf already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(crt0init.obj) : error LNK2005: ___xi_a already defined in MSVCRT.lib(cinitexe.obj)
+     1>LIBCMTD.lib(crt0init.obj) : error LNK2005: ___xi_z already defined in MSVCRT.lib(cinitexe.obj)
+     1>LIBCMTD.lib(crt0init.obj) : error LNK2005: ___xc_a already defined in MSVCRT.lib(cinitexe.obj)
+     1>LIBCMTD.lib(crt0init.obj) : error LNK2005: ___xc_z already defined in MSVCRT.lib(cinitexe.obj)
+     1>LIBCMTD.lib(hooks.obj) : error LNK2005: "void __cdecl terminate(void)" (?terminate@@YAXXZ) already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(invarg.obj) : error LNK2005: __invalid_parameter already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(invarg.obj) : error LNK2005: __invoke_watson already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(errmode.obj) : error LNK2005: ___set_app_type already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(atox.obj) : error LNK2005: _atoi already defined in MSVCRT.lib(MSVCR100.dll)
+     1>LIBCMTD.lib(atox.obj) : error LNK2005: __atoi64 already defined in MSVCRT.lib(MSVCR100.dll)
+     1>libcpmtd.lib(xlock.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>libcpmtd.lib(stdthrow.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>libcpmtd.lib(xthrow.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>darksdk.lib(DarkSDK.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in checkerboard.obj
+     1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+     1>LINK : warning LNK4098: defaultlib 'LIBCMTD' conflicts with use of other libs; use /NODEFAULTLIB:library
+     1>LIBCMTD.lib(crt0.obj) : error LNK2001: unresolved external symbol _main
+     1>C:\Users\andy.harbert\Documents\Local Courses\Prog1\Lab11_Tasks\Lab11_Tasks\Release\checkerBoard.exe : fatal error LNK1120: 1 unresolved externals
+     1>Done Building Project "C:\Users\andy.harbert\Documents\Local Courses\Prog1\Lab11_Tasks\Lab11_Tasks\checkerBoard\checkerBoard.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.23

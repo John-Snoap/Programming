@@ -1,0 +1,21 @@
+﻿Build started 10/28/2010 4:07:28 PM.
+     1>Project "C:\Users\john.snoap\Documents\Classes\Programming I\Visual Studio 2010\Labs\Lab07_Tasks\power\power.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating ".\Debug\power.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0710 /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug/" /Fd".\Debug/vc100.pdb" /Gd /TP /analyze- /errorReport:prompt power.cpp
+         power.cpp
+       Link:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Debug/power.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:".\Debug\power.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:".\Debug/power.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE:NO /IMPLIB:".\Debug\power.lib" /MACHINE:X86 .\Debug/power.obj
+     1>power.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/INCREMENTAL:NO' specification
+         power.vcxproj -> C:\Users\john.snoap\Documents\Classes\Programming I\Visual Studio 2010\Labs\Lab07_Tasks\power\.\Debug\power.exe
+       Manifest:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:".\Debug/power.exe;#1" /manifest .\Debug\power.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file ".\Debug\power.unsuccessfulbuild".
+         Touching ".\Debug\power.lastbuildstate".
+     1>Done Building Project "C:\Users\john.snoap\Documents\Classes\Programming I\Visual Studio 2010\Labs\Lab07_Tasks\power\power.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.21

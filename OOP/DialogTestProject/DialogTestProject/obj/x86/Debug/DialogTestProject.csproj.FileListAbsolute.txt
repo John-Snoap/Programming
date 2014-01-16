@@ -1,0 +1,10 @@
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\DialogTestProject\DialogTestProject\bin\Debug\DialogTestProject.exe
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\DialogTestProject\DialogTestProject\bin\Debug\DialogTestProject.pdb
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\DialogTestProject\DialogTestProject\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\DialogTestProject\DialogTestProject\obj\x86\Debug\DialogTestProject.Form1.resources
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\DialogTestProject\DialogTestProject\obj\x86\Debug\DialogTestProject.FormSettings.resources
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\DialogTestProject\DialogTestProject\obj\x86\Debug\DialogTestProject.Properties.Resources.resources
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\DialogTestProject\DialogTestProject\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\DialogTestProject\DialogTestProject\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\DialogTestProject\DialogTestProject\obj\x86\Debug\DialogTestProject.exe
+C:\Users\john.snoap\Documents\GitHub\Programming\OOP\DialogTestProject\DialogTestProject\obj\x86\Debug\DialogTestProject.pdb

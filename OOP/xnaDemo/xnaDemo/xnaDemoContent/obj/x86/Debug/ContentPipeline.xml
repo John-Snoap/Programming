@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Stars.png</Source>
+      <Name>Stars</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemo\bin\x86\Debug\Content\Stars.xnb</Output>
+      <Time>2013-11-26T16:17:31.4144732-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Millennium Falcon.png</Source>
+      <Name>Millennium Falcon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemo\bin\x86\Debug\Content\Millennium Falcon.xnb</Output>
+      <Time>2013-11-23T17:37:13.0447336-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Tie Fighter.png</Source>
+      <Name>Tie Fighter</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemo\bin\x86\Debug\Content\Tie Fighter.xnb</Output>
+      <Time>2013-11-24T15:17:21.9210686-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Tie Bomber.png</Source>
+      <Name>Tie Bomber</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemo\bin\x86\Debug\Content\Tie Bomber.xnb</Output>
+      <Time>2013-11-24T17:30:02.4436026-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Tie Interceptor.png</Source>
+      <Name>Tie Interceptor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemo\bin\x86\Debug\Content\Tie Interceptor.xnb</Output>
+      <Time>2013-11-24T15:14:39.6343972-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Slave I.png</Source>
+      <Name>Slave I</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemo\bin\x86\Debug\Content\Slave I.xnb</Output>
+      <Time>2013-11-24T17:47:49.0435159-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Darth Vader's TIE Advanced x1.png</Source>
+      <Name>Darth Vader's TIE Advanced x1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemo\bin\x86\Debug\Content\Darth Vader's TIE Advanced x1.xnb</Output>
+      <Time>2013-11-24T15:08:19.8938168-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Double Red Laser.png</Source>
+      <Name>Double Red Laser</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemo\bin\x86\Debug\Content\Double Red Laser.xnb</Output>
+      <Time>2013-12-06T19:38:11.3841462-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Imperial Class Star Destroyer.png</Source>
+      <Name>Imperial Class Star Destroyer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemo\bin\x86\Debug\Content\Imperial Class Star Destroyer.xnb</Output>
+      <Time>2013-11-24T18:45:05.1222747-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Executor Class Star Destroyer.png</Source>
+      <Name>Executor Class Star Destroyer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemo\bin\x86\Debug\Content\Executor Class Star Destroyer.xnb</Output>
+      <Time>2013-11-24T18:32:39.2562619-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Double Green Laser.png</Source>
+      <Name>Double Green Laser</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemo\bin\x86\Debug\Content\Double Green Laser.xnb</Output>
+      <Time>2013-11-24T22:03:33.4469888-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Single Red Laser.png</Source>
+      <Name>Single Red Laser</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemo\bin\x86\Debug\Content\Single Red Laser.xnb</Output>
+      <Time>2013-11-24T21:51:12.5368364-06:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemoContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemo\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemoContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\john.snoap\Documents\GitHub\Programming\OOP\xnaDemo\xnaDemo\xnaDemo\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-05:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T13:41:18-05:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-05:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-05:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-05:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T13:41:18-05:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2013-11-26T13:44:56.825155-06:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
