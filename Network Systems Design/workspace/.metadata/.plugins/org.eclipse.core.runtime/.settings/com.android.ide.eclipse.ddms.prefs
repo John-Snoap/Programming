@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 allocPanel.Col0=25
 allocPanel.Col00=65
 allocPanel.Col1=86
@@ -53,6 +54,8 @@ threadPanel.Col4=35
 threadPanel.Col5=269
 threadPanel.stack.col0=511
 =======
+=======
+>>>>>>> a98f26d2ded00a996d2edc18e0a0c13cbedf7042
 ddms.logcat.auotmonitor.level=error
 ddms.logcat.automonitor.userprompt=true
 devicePanel.Col0=117
@@ -83,4 +86,7 @@ threadPanel.Col3=45
 threadPanel.Col4=45
 threadPanel.Col5=280
 threadPanel.stack.col0=515
+<<<<<<< HEAD
+>>>>>>> a98f26d2ded00a996d2edc18e0a0c13cbedf7042
+=======
 >>>>>>> a98f26d2ded00a996d2edc18e0a0c13cbedf7042

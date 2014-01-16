@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <qualifiedTypeNameHistroy/>
 =======
+=======
+>>>>>>> a98f26d2ded00a996d2edc18e0a0c13cbedf7042
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="john.snoap.router.support.Factory"/>
 <fullyQualifiedTypeName name="android.app.Activity"/>
@@ -15,4 +18,7 @@
 <fullyQualifiedTypeName name="android.widget.TextView"/>
 <fullyQualifiedTypeName name="john.snoap.routersimulator.R"/>
 </qualifiedTypeNameHistroy>
+<<<<<<< HEAD
+>>>>>>> a98f26d2ded00a996d2edc18e0a0c13cbedf7042
+=======
 >>>>>>> a98f26d2ded00a996d2edc18e0a0c13cbedf7042

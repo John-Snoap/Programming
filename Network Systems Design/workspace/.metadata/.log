@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 !SESSION 2014-01-13 17:00:41.161 -----------------------------------------------
 eclipse.buildId=v22.3.0-887826
 java.version=1.6.0_65
@@ -99,6 +100,8 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product com.android.
 !ENTRY org.eclipse.core.net 1 0 2014-01-13 19:39:50.337
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
 =======
+=======
+>>>>>>> a98f26d2ded00a996d2edc18e0a0c13cbedf7042
 !SESSION 2014-01-06 18:09:20.883 -----------------------------------------------
 eclipse.buildId=v22.3.0-887826
 java.version=1.7.0_04
@@ -3417,4 +3420,7 @@ The most important of these settings is core.autocrlf. Git for Windows by defaul
 this system level configuration. The Git installation location can be configured on the
 Team > Git > Configuration preference page's 'System Settings' tab.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+<<<<<<< HEAD
+>>>>>>> a98f26d2ded00a996d2edc18e0a0c13cbedf7042
+=======
 >>>>>>> a98f26d2ded00a996d2edc18e0a0c13cbedf7042

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<section name="FileSystemImportWizard">
 	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
 		<item value="900" key="dialogWidth"/>
 		<item value="563" key="dialogHeight"/>
+=======
+	<section name="org.eclipse.ui.internal.QuickAccess">
+		<item value="1080" key="dialogWidth"/>
+		<item value="625" key="dialogHeight"/>
+>>>>>>> a98f26d2ded00a996d2edc18e0a0c13cbedf7042
 =======
 	<section name="org.eclipse.ui.internal.QuickAccess">
 		<item value="1080" key="dialogWidth"/>
@@ -22,6 +28,7 @@
 	</section>
 	<section name="WorkbenchPreferenceDialogSettings">
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<item value="83" key="DIALOG_Y_ORIGIN"/>
 		<item value="409" key="DIALOG_X_ORIGIN"/>
 	</section>
@@ -34,10 +41,15 @@
 			<item value="com.android.ide.eclipse.wizards.category"/>
 		</list>
 =======
+=======
+>>>>>>> a98f26d2ded00a996d2edc18e0a0c13cbedf7042
 		<item value="8" key="DIALOG_Y_ORIGIN"/>
 		<item value="8" key="DIALOG_X_ORIGIN"/>
 	</section>
 	<section name="ImportExportAction">
+<<<<<<< HEAD
+>>>>>>> a98f26d2ded00a996d2edc18e0a0c13cbedf7042
+=======
 >>>>>>> a98f26d2ded00a996d2edc18e0a0c13cbedf7042
 	</section>
 </section>
