@@ -1,0 +1,6 @@
+package john.snoap.router.support;
+
+public class UIManager
+{
+	
+} // end class UIManager

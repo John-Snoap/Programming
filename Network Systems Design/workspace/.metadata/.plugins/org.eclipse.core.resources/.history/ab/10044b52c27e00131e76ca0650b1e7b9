@@ -1,0 +1,26 @@
+package john.snoap.router.support;
+
+import android.app.Activity;
+
+/**
+ * class Factory
+ * @author john.snoap
+ * GetParentActivityReference()
+ */
+public class Factory
+{
+	// private variables
+	private Activity parentActivity;
+	
+	// getters and setters (in C# we have properties which are better than getters and setters, oh well...
+	public Activity GetParentActivityReference()
+	{
+		return parentActivity;
+	} // end getter GetParentActivity
+	
+	// constructor
+	public Factory (Activity callingActivity)
+	{
+		parentActivity = callingActivity;
+	} // end constructor
+} // end class Factory
