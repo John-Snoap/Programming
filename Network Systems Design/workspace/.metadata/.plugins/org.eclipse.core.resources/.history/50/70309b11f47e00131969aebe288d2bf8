@@ -20,7 +20,7 @@ public class MainActivity extends Activity
         setContentView(R.layout.activity_main);
         
         // my stuff
-        //uiManager.RaiseToast("all done");
+        uiManager.RaiseToast("all done");
     } // end override method onCreate
 
     @Override
