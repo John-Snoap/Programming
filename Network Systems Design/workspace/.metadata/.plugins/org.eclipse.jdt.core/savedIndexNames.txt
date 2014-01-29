@@ -1,1 +1,0 @@
-INDEX VERSION 1.126+/Users/john.snoap/Documents/GitHub/Programming/Network Systems Design/workspace/.metadata/.plugins/org.eclipse.jdt.core
