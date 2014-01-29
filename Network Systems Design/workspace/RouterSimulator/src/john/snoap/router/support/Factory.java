@@ -1,3 +1,5 @@
+// John Snoap Factory.java
+
 package john.snoap.router.support;
 
 import android.app.Activity;
@@ -12,18 +14,24 @@ public class Factory
 	private Activity parentActivity;
 	private UIManager uiManager;
 	private NetworkConstants networkConstants;
+	private SoundPlayer soundPlayer;
 	// end private variables
 	
 	// getters and setters
-	public Activity GetParentActivityReference()
+	public Activity getParentActivityReference()
 	{
 		return parentActivity;
-	} // end getter GetParentActivity
+	} // end getter getParentActivity
 	
-	public UIManager GetUIManager()
+	public UIManager getUIManager()
 	{
-		return uiManager.GetUIManager();
-	} // end getter GetUIManager
+		return uiManager.getUIManager();
+	} // end getter getUIManager
+	
+	public SoundPlayer getSoundPlayer()
+	{
+		return soundPlayer;
+	} // end getter getSoundPlayer
 	// end getters and setters
 	
 	// constructors
@@ -32,9 +40,10 @@ public class Factory
 	{
 		parentActivity = callingActivity;
 		networkConstants = new NetworkConstants(parentActivity);
-		uiManager = new UIManager(parentActivity); // this constructor call may have to change to simply giving it the parentActivity
+		soundPlayer = new SoundPlayer(parentActivity);
+		uiManager = new UIManager(parentActivity);
 		
-		uiManager.UpdateObjectReferences(this);
+		uiManager.updateObjectReferences(this);
 	} // end default constructor
 	// end constructors
 } // end class Factory

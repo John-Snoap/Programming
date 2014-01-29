@@ -2,7 +2,6 @@ package john.snoap.router.support;
 
 import john.snoap.routersimulator.R;
 import john.snoap.router.support.NetworkConstants;
-//import android.R;
 import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
@@ -50,12 +49,12 @@ public class SoundPlayer {
 	}
 	
 	private void loadSounds(){
-//		badPacketSoundID = notificationSounds.load(parentActivity, R.raw.bad_packet, 1);
-//		packetSentSoundID = notificationSounds.load(parentActivity, R.raw.packet_sent, 1);
-//		buttonPressSoundID = notificationSounds.load(parentActivity, R.raw.button_sound, 1);
-//		receiveMessageSoundID = notificationSounds.load(parentActivity, R.raw.rx_im_sound, 1);
-//		sendMessageSoundID = notificationSounds.load(parentActivity, R.raw.send_im, 1);
-//		alertSoundID = notificationSounds.load(parentActivity, R.raw.gromb_sound, 1);
+		badPacketSoundID = notificationSounds.load(parentActivity, R.raw.bad_packet, 1);
+		packetSentSoundID = notificationSounds.load(parentActivity, R.raw.packet_sent, 1);
+		buttonPressSoundID = notificationSounds.load(parentActivity, R.raw.button_sound, 1);
+		receiveMessageSoundID = notificationSounds.load(parentActivity, R.raw.rx_im_sound, 1);
+		sendMessageSoundID = notificationSounds.load(parentActivity, R.raw.send_im, 1);
+		alertSoundID = notificationSounds.load(parentActivity, R.raw.gromb_sound, 1);
 		
 	}
 
@@ -98,7 +97,7 @@ public class SoundPlayer {
 			playSendMessageSound();
 			break;
 		case NetworkConstants.alertSound : 
-			playSendMessageSound();
+			playAlertSound();
 			break;
 		}
 	}
@@ -106,7 +105,7 @@ public class SoundPlayer {
 	public void playAlertSound(){
 		getVolume();
 		if (soundsLoaded){
-			notificationSounds.play(badPacketSoundID, currentVolume, currentVolume, 
+			notificationSounds.play(alertSoundID, currentVolume, currentVolume, 
 										soundPriority, dontLoopSound, normalPlaybackRate);
 		}
 	}
@@ -146,8 +145,9 @@ public class SoundPlayer {
 		}
 	}
 	
-	public void UpdateObjectReferences(Factory factory){
+	public void updateObjectReferences(Factory factory)
+	{
 		// does nothing... currently needs no external objects because I'm just a lowly servant.
-	}
+	} // end method updateObjectRefernces
 	
 }

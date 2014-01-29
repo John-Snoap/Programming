@@ -1,3 +1,5 @@
+// John Snoap UIManager.java
+
 package john.snoap.router.support;
 
 import john.snoap.routersimulator.R;
@@ -17,53 +19,57 @@ public class UIManager
 	private Activity parentActivity;
 	private Context context;
 	private TextView IPAddressLabel;
+	private TextView IPAddress;
+	private SoundPlayer soundPlayer;
 	// end private variables
 	
 	// getters and setters
-	public UIManager GetUIManager()
+	public UIManager getUIManager()
 	{
 		return this;
-	} // end getter GetUIManager
+	} // end getter getUIManager
 	// end getters and setters
 	
 	// constructors
 	// default constructor
 	public UIManager(Activity callingActivity)
 	{
-		// I am only doing the below line of code so I do not re-write code in this class.
-		// In most of our classes calling UpdateObjectReferences in the constructor
-		// will not be a good way for us to do things because we will need a two part
-		// birth process.
-		//UpdateObjectReferences(factory);
-		// Maybe I should only pass the constructor an Activity.
-		// Then I would be forced to call UpdateObjectReferences later.
-		parentActivity = callingActivity;//this.factory.GetParentActivityReference();
+		parentActivity = callingActivity;
 		context = parentActivity.getBaseContext();
 		setupMainScreenWidgets();
+		IPAddress.setText(NetworkConstants.IP_ADDRESS);
 	} // end default constructor
 	// end constructors
 	
 	// public methods
-	public void UpdateObjectReferences(Factory factory)
+	public void updateObjectReferences(Factory factory)
 	{
 		this.factory = factory;
-	} // end public method GetObjectReferences
+		soundPlayer = this.factory.getSoundPlayer();
+	} // end public method updateObjectReferences
 	
 	/**
-	 * RaiseToast
+	 * raiseToast
 	 * message : String to display
 	 * @param message
 	 */
-	public void RaiseToast(String message)
+	public void raiseToast(String message)
 	{
 		Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 	} // end public method raiseToast
+	
+	public void setIPAddressTextView()
+	{
+		setupMainScreenWidgets();
+		soundPlayer.playButtonPressSound();
+	} // end public method setIPAddressTextView
 	// end public methods
 	
 	// private methods
 	private void setupMainScreenWidgets()
 	{
-		//IPAddressLabel = (TextView) parentActivity.findViewById(R.id.IPAddressLabel);
+		IPAddressLabel = (TextView) parentActivity.findViewById(R.id.textView2);
+		IPAddress = (TextView) parentActivity.findViewById(R.id.textView1);
 	} // end private method setupMainScreenWidgets
 	// end private methods
 } // end class UIManager
