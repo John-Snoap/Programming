@@ -43,9 +43,7 @@ public class LL2P
 			else
 			{
 				destinationLL2P_MACaddress = value;
-				destinationLL2P_MACaddressString = Utilities.padHexString(
-				Integer.toHexString(destinationLL2P_MACaddress),
-				NetworkConstants.LL2P_ADDRESS_LENGTH);
+				destinationLL2P_MACaddressString = Utilities.padHexString(Integer.toHexString(destinationLL2P_MACaddress), NetworkConstants.LL2P_ADDRESS_LENGTH);
 			} // end else
 		} // end try
 		catch (Exception e)
