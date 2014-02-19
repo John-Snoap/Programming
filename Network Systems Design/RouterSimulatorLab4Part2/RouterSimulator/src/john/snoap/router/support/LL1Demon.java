@@ -32,9 +32,9 @@ public class LL1Demon // because Daemon is just too long... and Demon is funnier
 	// end private data
 	
 	// getters and setters
-	public List<?> getAdjacencyList()
+	public List<AdjacencyTableEntry> getAdjacencyList()
 	{
-		return (List<?>) addressTable;
+		return addressTable.getList();
 	} // end getter getAdjacencyList
 	// end getters and setters
 	
@@ -52,8 +52,8 @@ public class LL1Demon // because Daemon is just too long... and Demon is funnier
 	{
 		ll2p = factory.getLL2P();
 		uiManager = factory.getUIManager();
-		addressTable.addEntry(0xde1e7e, "10.73.141.254");
-		addressTable.addEntry(0xf001ed, "10.73.213.105");
+		//addressTable.addEntry(0xde1e7e, "10.73.141.254");
+		//addressTable.addEntry(0xf001ed, "10.73.213.105");
 		receivePackets = new ReceivePacketsOverUDP(receiveSocket);
 		new Thread(receivePackets).start();
 	} // end public method updateObjectReferences
@@ -101,6 +101,21 @@ public class LL1Demon // because Daemon is just too long... and Demon is funnier
 			uiManager.raiseToast("Attempt to send to unknown LL2P:  " + frame.getDestinationLL2P_MACaddressString());
 		} // end else
 	} // end public method sendLL2Pframe
+	
+	// call this in an activity's onDestroy method to ensure the sockets are taken care of
+	public void cancel()
+	{
+		try
+		{
+			sendSocket.close();
+			receiveSocket.close();
+			receivePackets.cancel();
+		} // end try
+		catch (Exception e)
+		{
+			
+		} // end catch
+	} // end public method cancel
 	// end public methods
 	
 	// private methods
@@ -204,8 +219,21 @@ public class LL1Demon // because Daemon is just too long... and Demon is funnier
 					Log.e(TAG, "Something horribly wrong happened");
 					break;
 				} // end catch
-			} // end while
+			} // end infinite while loop
 		} // end public method run
+		
+		// Will cancel an in-progress connection, and close the socket
+		public void cancel()
+		{
+			try
+			{
+				datagramSocketReceiveUDP.close();
+			} // end try
+			catch (Exception e)
+			{
+				
+			} // end catch
+		} // end public method cancel
 	} // end private class ReceivePacketsOverUDP
 	
 	// it feels good to program like a man.  i'm going to do it again!
@@ -241,6 +269,25 @@ public class LL1Demon // because Daemon is just too long... and Demon is funnier
 				mHandler.obtainMessage(MESSAGE_ERROR, -1, -1, "Error sending to Send Socket");
 				Log.e(TAG, "Error sending to Send Socket");
 			} // end catch
+			catch (Exception e)
+			{
+				mHandler.obtainMessage(MESSAGE_ERROR, -1, -1, "Error sending to Send Socket");
+				cancel();
+				Log.e(TAG, "Something horrible happened");
+			} // end catch
 		} // end public method run
+		
+		// Will cancel an in-progress connection, and close the socket
+		public void cancel()
+		{
+			try
+			{
+				datagramSocketSendUDP.close();
+			} // end try
+			catch (Exception e)
+			{
+				
+			} // end catch
+		} // end public method cancel
 	} // end private class SendPacketsOverUDP
 } // end public class LL1Demon
