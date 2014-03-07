@@ -16,8 +16,11 @@ public class NetworkConstants
 										// stored here in dotted decimal
 										// notation
 	public static String IP_ADDRESS_PREFIX; // the prefix will be stored here
-
-	// my MAC Address
+	
+	// my LL3P IP Address
+	public static final String MY_LL3P_ADDRESS = "2.02";
+	
+	// my LL2P MAC Address
 	public static final String MY_LL2P_ADDRESS = "f001ed";
 
 	// LL2P type fields
@@ -26,11 +29,17 @@ public class NetworkConstants
 	public static final String LRP_PACKET_PAYLOAD = "8003";
 	public static final String LL2P_ECHO_REQUEST = "8004";
 	public static final String LL2P_ECHO_REPLY = "8005";
+	public static final String ARP_UPDATE = "8006";
+	public static final String ARP_REPLY = "8007";
 
 	// LL2P field lengths
 	public static final int LL2P_ADDRESS_LENGTH = 3;
 	public static final int CRC_LENGTH = 2;
 	public static final int LL2P_TYPE_LENGTH = 2;
+	
+	// ARP constants
+	public static final int ARP_TIMEOUT = 60;
+	public static final int ARP_CHECK_INTERVAL = ARP_TIMEOUT/10;
 
 	// SOUNDS
 	public static final int badPacketSound = 1;

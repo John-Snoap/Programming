@@ -53,6 +53,28 @@ public class Utilities
 	} // end public static method prependString
 
 	// my methods that I might use
+	public static Integer getLL3PIntFromLL3PString(String ll3pString)
+	{
+		Integer theFinalAnswer = 0;
+		String[] strings = ll3pString.split("\\.");
+		
+		if (strings.length != 2)
+		{
+			// do nothing, not correct format, we will just return 0
+		} // end if
+		else
+		{
+			Integer hiThere = Integer.valueOf(strings[0], 10);
+			Integer lowHere = Integer.valueOf(strings[1], 10);
+			
+			hiThere *= 256;
+			
+			theFinalAnswer = hiThere + lowHere;
+		} // end else
+		
+		return theFinalAnswer;
+	} // end public static method getLL3PIntFromLL3PString
+	
 	// I stole this method from online:
 	// http://stackoverflow.com/questions/5513152/easy-way-to-concatenate-two-byte-arrays
 	public static byte[] concat(byte[]... arrays)

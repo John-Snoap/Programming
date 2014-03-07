@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class ARPTable
+public class ARPTable implements Runnable
 {
 	// private data
 	private Set<ARPTableEntry> table;
@@ -96,5 +96,13 @@ public class ARPTable
 			} // end if
 		} // end for each loop
 	} // end public method addOrUpdate
+	
+	// override methods
+	@Override
+	public void run()
+	{
+		expireAndRemove();
+	} // end override public method run
+	// end override methods
 	// end public methods
 } // end public class ARPTable
