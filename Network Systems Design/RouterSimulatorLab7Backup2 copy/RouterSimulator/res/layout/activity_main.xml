@@ -189,7 +189,7 @@
             android:layout_above="@+id/editTextEchoPayload"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/buttonAddAdjacency" >
+            android:layout_alignRight="@id/buttonAddAdjacency" >
 
         </ListView>
 
@@ -273,7 +273,7 @@
             android:text="@string/Forwarding_Table" />
 
         <ListView
-            android:id="@+id/listViewForwardingTable"
+            android:id="@+id/listView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView10"

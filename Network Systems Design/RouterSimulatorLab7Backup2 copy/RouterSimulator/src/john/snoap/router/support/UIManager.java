@@ -38,24 +38,16 @@ public class UIManager
 	private TextView crc16ccitt;
 	private TextView payloadLL2P;
 	private ListView listViewForLL1Demon;
-	private ListView listViewForRoutingTable;
-	private ListView listViewForForwardingTable;
 	private Button buttonAddAdjacency;
 	private EditText editTextForIPaddress;
 	private EditText editTextForLL2PMAC;
 	private EditText editTextForEchoPayload;
 	private List<AdjacencyTableEntry> listOfAdjacencyTableEntries;
 	private ArrayAdapter<AdjacencyTableEntry> arrayAdapterForAdjacencyTable;
-	private List<RouteTableEntry> listOfRoutingTableEntries;
-	private ArrayAdapter<RouteTableEntry> arrayAdapterForRoutingTable;
-	private List<RouteTableEntry> listOfForwardingTableEntries;
-	private ArrayAdapter<RouteTableEntry> arrayAdapterForForwardingTable;
 	private SoundPlayer soundPlayer;
 	private List<LL2P> ll2pList;
 	private LL2P ll2p;
 	private LL1Demon ll1demon;
-	private RouteTable routingTable;
-	private ForwardingTable forwardingTable;
 	// end private variables
 
 	// getters and setters
@@ -81,8 +73,6 @@ public class UIManager
 		soundPlayer = this.factory.getSoundPlayer();
 		ll2pList = this.factory.getLL2P();
 		ll1demon = this.factory.getDemon1();
-		routingTable = this.factory.getRouteTable();
-		forwardingTable = this.factory.getForwardingTable();
 		setupMainScreenWidgets();
 	} // end public method updateObjectReferences
 
@@ -133,16 +123,6 @@ public class UIManager
 					editTextForLL2PMAC.setText("");
 					editTextForIPaddress.setText("");
 				} // end if
-				else
-				{
-					// remove old routes
-					routingTable.removeOldRoutes();
-					forwardingTable.removeOldRoutes();
-					
-					// reset list adapters
-					resetRoutingListAdapter();
-					resetForwardingListAdapter();
-				} // end else
 			} // end try
 			catch (Exception e)
 			{
@@ -164,34 +144,6 @@ public class UIManager
 			arrayAdapterForAdjacencyTable.add(tableEntry);
 	    } // end for each loop
 	} // end public method resetAdjacencyListAdapter
-	
-	public void resetRoutingListAdapter()
-	{
-		// get the current list
-		listOfRoutingTableEntries = routingTable.getList();
-		
-		arrayAdapterForRoutingTable.clear(); // clear the adjacency list
-		// load the list items in the adapter, this updates the screen too.
-		for (RouteTableEntry tableEntry : listOfRoutingTableEntries)
-	    {
-	        // Add the name and address to an array adapter to show in a ListView
-			arrayAdapterForRoutingTable.add(tableEntry);
-	    } // end for each loop
-	} // end public method resetRoutingListAdapter
-	
-	public void resetForwardingListAdapter()
-	{
-		// get the current list
-		listOfForwardingTableEntries = forwardingTable.getList();
-		
-		arrayAdapterForForwardingTable.clear(); // clear the adjacency list
-		// load the list items in the adapter, this updates the screen too.
-		for (RouteTableEntry tableEntry : listOfForwardingTableEntries)
-	    {
-	        // Add the name and address to an array adapter to show in a ListView
-			arrayAdapterForForwardingTable.add(tableEntry);
-	    } // end for each loop
-	} // end public method resetRoutingListAdapter
 	// end public methods
 
 	// private methods
@@ -204,8 +156,6 @@ public class UIManager
 		payloadLL2P = (TextView) parentActivity.findViewById(R.id.textViewPayloadLL2P);
 		
 		listViewForLL1Demon = (ListView) parentActivity.findViewById(R.id.listViewAdjacencyTable);
-		listViewForRoutingTable = (ListView) parentActivity.findViewById(R.id.listViewRoutingTable);
-		listViewForForwardingTable = (ListView) parentActivity.findViewById(R.id.listViewForwardingTable);
 		
 		buttonAddAdjacency = (Button) parentActivity.findViewById(R.id.buttonAddAdjacency);
 		
@@ -216,31 +166,16 @@ public class UIManager
 		editTextForEchoPayload = (EditText) parentActivity.findViewById(R.id.editTextEchoPayload);
 		
 		listOfAdjacencyTableEntries = ll1demon.getAdjacencyList();
-		listOfRoutingTableEntries = routingTable.getList();
-		listOfForwardingTableEntries = forwardingTable.getList();
 		
 		arrayAdapterForAdjacencyTable = new ArrayAdapter<AdjacencyTableEntry>(parentActivity, 
 				android.R.layout.simple_list_item_1, 
 				listOfAdjacencyTableEntries);
 		
-		arrayAdapterForRoutingTable = new ArrayAdapter<RouteTableEntry>(parentActivity, 
-				android.R.layout.simple_list_item_1, 
-				listOfRoutingTableEntries);
-		
-		arrayAdapterForForwardingTable = new ArrayAdapter<RouteTableEntry>(parentActivity, 
-				android.R.layout.simple_list_item_1, 
-				listOfForwardingTableEntries);
-		
 		resetAdjacencyListAdapter();
-		resetRoutingListAdapter();
-		resetForwardingListAdapter();
 		
 		listViewForLL1Demon.setAdapter(arrayAdapterForAdjacencyTable);
 		listViewForLL1Demon.setOnItemClickListener(sendToLL2P);
 		listViewForLL1Demon.setOnItemLongClickListener(removeFromList);
-		
-		listViewForRoutingTable.setAdapter(arrayAdapterForRoutingTable);
-		listViewForForwardingTable.setAdapter(arrayAdapterForForwardingTable);
 	} // end private method setupMainScreenWidgets
 	
 	private OnItemClickListener sendToLL2P = new AdapterView.OnItemClickListener()

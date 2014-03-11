@@ -43,7 +43,6 @@ public class RouteTable
 	public void addEntry(int source, int net, int distance, int nextHop)
 	{
 		table.add(new RouteTableEntry(source, new NetworkDistancePair(net, distance), nextHop));
-		uiManager.resetRoutingListAdapter();
 	} // end public method AddEntry
 	
 	public void removeOldRoutes()
@@ -63,19 +62,15 @@ public class RouteTable
 				table.add(entry); // put it back in the table
 			} // end else
 		} // end for each loop
-		
-		uiManager.resetRoutingListAdapter();
-		uiManager.resetForwardingListAdapter();
 	} // end public method RemoveOldRoutes
 	
 	public void removeEntry(int source, int net)
 	{ // this is utilizing my compareTo method, only the source and network number matter
 		table.remove(new RouteTableEntry(source, new NetworkDistancePair(net, 0), 0));
-		uiManager.resetRoutingListAdapter();
-		uiManager.resetForwardingListAdapter();
 	} // end public method removeEntry
 	// end public methods
 	
 	// private methods
 	// end private methods
 } // end public class RouteTable
+

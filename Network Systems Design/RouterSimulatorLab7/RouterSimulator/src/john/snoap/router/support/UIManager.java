@@ -38,6 +38,8 @@ public class UIManager
 	private TextView crc16ccitt;
 	private TextView payloadLL2P;
 	private ListView listViewForLL1Demon;
+	private ListView listViewForRoutingTable;
+	private ListView listViewForForwardingTable;
 	private Button buttonAddAdjacency;
 	private EditText editTextForIPaddress;
 	private EditText editTextForLL2PMAC;
@@ -156,8 +158,9 @@ public class UIManager
 		payloadLL2P = (TextView) parentActivity.findViewById(R.id.textViewPayloadLL2P);
 		
 		listViewForLL1Demon = (ListView) parentActivity.findViewById(R.id.listViewAdjacencyTable);
+		listViewForRoutingTable = (ListView) parentActivity.findViewById(R.id.listViewRoutingTable);
 		
-		buttonAddAdjacency = (Button) parentActivity.findViewById(R.id.buttonAddAdjacency);
+		buttonAddAdjacency = (Button) parentActivity.findViewById(R.id.buttonAddAdjacenc);
 		
 		buttonAddAdjacency.setOnClickListener(addAdjacency);
 		

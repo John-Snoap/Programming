@@ -71,7 +71,6 @@ public class ForwardingTable extends RouteTable
 				{
 					table.remove(entry);
 					table.add(newEntry);
-					uiManager.resetForwardingListAdapter();
 					break; // we have done what we came here to do, now lets leave
 				} // end if
 			} // end if
@@ -80,7 +79,6 @@ public class ForwardingTable extends RouteTable
 		if (!netInTableAlready)
 		{
 			table.add(newEntry);
-			uiManager.resetForwardingListAdapter();
 		} // end if
 	} // end public method addFibEntry
 	
