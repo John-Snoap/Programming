@@ -46,6 +46,12 @@ public class RouteTable
 		uiManager.resetRoutingListAdapter();
 	} // end public method AddEntry
 	
+	public void addEntry(int source, NetworkDistancePair netDist, int nextHop)
+	{
+		table.add(new RouteTableEntry(source, netDist, nextHop));
+		uiManager.resetRoutingListAdapter();
+	} // end public method AddEntry
+	
 	public void removeOldRoutes()
 	{
 		List<RouteTableEntry> safeList = Collections.synchronizedList(getList());

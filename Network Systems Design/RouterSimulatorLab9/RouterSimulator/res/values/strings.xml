@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Router Simulator</string>
+    <string name="action_settings">Settings</string>
+    <string name="IPAddress">&quot;IP Address:  &quot;</string>
+    <string name="ShowIPAddress">&quot;Show IP Address&quot;</string>
+    <string name="SendLL2PFrame">&quot;Send LL2P Frame&quot;</string>
+    <string name="Destination_LL2P_MAC">&quot;Destiny LL2P MAC:  &quot;</string>
+    <string name="Source_LL2P_MAC">&quot;Source LL2P MAC:  &quot;</string>
+    <string name="Type_Field">&quot;Type Field:  &quot;</string>
+    <string name="CRC16CCITT">&quot;CRC16CCITT:  &quot;</string>
+    <string name="Payload">&quot;Payload:  &quot;</string>
+    <string name="turnOnWifi">&quot;You need to turn on WiFi before this app will work&quot;</string>
+    <string name="FFFFFF">FFFFFF</string>
+    <string name="FFFF">FFFF</string>
+    <string name="LL2P_MAC">&quot;LL2P MAC:  &quot;</string>
+    <string name="Add">&quot;Add&quot;</string>
+    <string name="IP_Example">&quot;10.0.0.0&quot;</string>
+    <string name="Echo_Payload">&quot;Echo Payload:  &quot;</string>
+    <string name="Echo_Payload_Hint">&quot;Echo&quot;</string>
+    <string name="Routing_Table">&quot;Routing Table&quot;</string>
+    <string name="Forwarding_Table">&quot;Forwarding Table&quot;</string>
+
+</resources>

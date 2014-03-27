@@ -97,21 +97,22 @@ public class Factory
 		ll1demon = new LL1Demon();
 		ll2demon = new LL2Demon();
 		arpDemon = new ARPDemon();
-		lrpDemon = new LRPDemon();
 		routeTable = new RouteTable();
 		forwardingTable = new ForwardingTable();
+		lrpDemon = new LRPDemon();
 		scheduler = new Scheduler();
 		
 		uiManager.updateObjectReferences(this);
 		ll1demon.updateObjectReferences(this);
 		ll2demon.updateObjectReferences(this);
 		arpDemon.updateObjectReferences(this);
-		lrpDemon.updateObjectReferences(this);
 		routeTable.updateObjectReferences(this);
 		forwardingTable.updateObjectReferences(this);
+		lrpDemon.updateObjectReferences(this);
 		scheduler.updateObjectReferences(this);
 		
 		// add entries to routing table and forwarding table
+		/*
 		routeTable.addEntry(Utilities.getLL3PIntFromLL3PString("0205"), 1, 1, Utilities.getLL3PIntFromLL3PString("0104"));
 		routeTable.addEntry(Utilities.getLL3PIntFromLL3PString("0205"), 3, 1, Utilities.getLL3PIntFromLL3PString("0307"));
 		routeTable.addEntry(Utilities.getLL3PIntFromLL3PString("0205"), 4, 1, Utilities.getLL3PIntFromLL3PString("0405"));
@@ -124,6 +125,7 @@ public class Factory
 		routeTable.addEntry(Utilities.getLL3PIntFromLL3PString("0307"), 2, 2, Utilities.getLL3PIntFromLL3PString("0307"));
 		routeTable.addEntry(Utilities.getLL3PIntFromLL3PString("0307"), 5, 2, Utilities.getLL3PIntFromLL3PString("0307"));
 		forwardingTable.addRouteList(routeTable.getList());
+		*/
 	} // end default constructor
 	// end constructors
 } // end class Factory

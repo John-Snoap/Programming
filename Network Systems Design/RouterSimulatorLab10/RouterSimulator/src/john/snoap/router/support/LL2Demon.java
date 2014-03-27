@@ -72,6 +72,8 @@ public class LL2Demon
 		
 		newFrame.setDestinationLL2P_MACaddress(LL2PNode);
 		
+		newFrame.setPayload("ARP Buddies!");
+		
 		sendLL2PFrame(newFrame);
 	} // end public method sendARPUpdate
 	// end public methods
@@ -115,12 +117,12 @@ public class LL2Demon
 			else if (typeFieldString.equals(NetworkConstants.ARP_UPDATE))
 			{
 				// the pay-load string should have the LL3P Address
-				arpDemon.addOrUpdate(frame.getDestinationLL2P_MACaddress(), Utilities.getLL3PIntFromLL3PString(frame.getPayloadString()));
+				arpDemon.addOrUpdate(frame.getSourceLL2P_MACaddress(), Utilities.getLL3PIntFromLL3PString(frame.getPayloadString()));
 				replyToARPUpdate(frame);
 			} // end else if
 			else if (typeFieldString.equals(NetworkConstants.ARP_REPLY))
 			{
-				// deal with it here
+				//arpDemon.addOrUpdate(frame.getDestinationLL2P_MACaddress(), Utilities.getLL3PIntFromLL3PString(frame.getPayloadString()));
 			} // end else if
 			else
 			{

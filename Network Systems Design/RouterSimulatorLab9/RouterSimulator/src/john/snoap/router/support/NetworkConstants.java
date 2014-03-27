@@ -48,6 +48,9 @@ public class NetworkConstants
 	// route table constants
 	public static final int ROUTE_TABLE_TIMEOUT = 30; // this might change later
 	public static final int ROUTE_TABLE_CHECK_INTERVAL = ROUTE_TABLE_TIMEOUT/10;
+	
+	// boot up time constant
+	public static final int ROUTER_BOOT_TIME = 10; // this is in seconds
 
 	// SOUNDS
 	public static final int badPacketSound = 1;

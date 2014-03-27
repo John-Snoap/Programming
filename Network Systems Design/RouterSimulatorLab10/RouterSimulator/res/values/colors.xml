@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Neutral_Fill">#FFEAA6</color>
+    <color name="Neutral_Font">#9C6420</color>
+    <color name="Blue_Fill">#87CFFA</color>
+    <color name="Blue_Font">#1B1A6B</color>
+    <color name="Red_Fill">#FFC7CE</color>
+    <color name="Red_Font">#9C0010</color>
+    
+</resources>
