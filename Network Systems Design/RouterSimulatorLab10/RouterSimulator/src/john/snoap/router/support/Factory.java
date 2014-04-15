@@ -19,8 +19,10 @@ public class Factory
 	private UIManager uiManager;
 	private SoundPlayer soundPlayer;
 	private List<LL2P> ll2pList;
+	private List<LL3P> ll3pList;
 	private LL1Demon ll1demon;
 	private LL2Demon ll2demon;
+	private LL3Demon ll3demon;
 	private ARPDemon arpDemon;
 	private LRPDemon lrpDemon;
 	private RouteTable routeTable;
@@ -49,6 +51,11 @@ public class Factory
 		return ll2pList;
 	} // end getter getLL2P
 	
+	public List<LL3P> getLL3P()
+	{
+		return ll3pList;
+	} // end getter getLL3P
+	
 	public LL1Demon getDemon1()
 	{
 		return ll1demon;
@@ -58,6 +65,11 @@ public class Factory
 	{
 		return ll2demon;
 	} // end getter getDemon2
+	
+	public LL3Demon getDemon3()
+	{
+		return ll3demon;
+	} // end getter getDemon3
 	
 	public ARPDemon getARPDemon()
 	{
@@ -94,8 +106,11 @@ public class Factory
 		uiManager = new UIManager(parentActivity);
 		ll2pList = new ArrayList<LL2P>();
 		ll2pList.add(new LL2P("de1e7e", NetworkConstants.MY_LL2P_ADDRESS, NetworkConstants.LL3P_PACKET_PAYLOAD, "I love you professor Smith!  You are the greatest professor ever!"));
+		ll3pList = new ArrayList<LL3P>();
+		ll3pList.add(new LL3P(NetworkConstants.MY_LL3P_ADDRESS, "0303", NetworkConstants.LL3P_PACKET_PAYLOAD, "0000", "FF", "I love you too professor Smith!"));
 		ll1demon = new LL1Demon();
 		ll2demon = new LL2Demon();
+		ll3demon = new LL3Demon();
 		arpDemon = new ARPDemon();
 		routeTable = new RouteTable();
 		forwardingTable = new ForwardingTable();
@@ -105,6 +120,7 @@ public class Factory
 		uiManager.updateObjectReferences(this);
 		ll1demon.updateObjectReferences(this);
 		ll2demon.updateObjectReferences(this);
+		ll3demon.updateObjectReferences(this);
 		arpDemon.updateObjectReferences(this);
 		routeTable.updateObjectReferences(this);
 		forwardingTable.updateObjectReferences(this);

@@ -37,6 +37,13 @@ public class UIManager
 	private TextView typeFieldLL2P;
 	private TextView crc16ccitt;
 	private TextView payloadLL2P;
+	private TextView sourceLL3P;
+	private TextView destinationLL3P;
+	private TextView typeFieldLL3P;
+	private TextView id;
+	private TextView ttl;
+	private TextView checksum;
+	private TextView payloadLL3P;
 	private ListView listViewForLL1Demon;
 	private ListView listViewForRoutingTable;
 	private ListView listViewForForwardingTable;
@@ -53,6 +60,8 @@ public class UIManager
 	private SoundPlayer soundPlayer;
 	private List<LL2P> ll2pList;
 	private LL2P ll2p;
+	private List<LL3P> ll3pList;
+	private LL3P ll3p;
 	private LL1Demon ll1demon;
 	private RouteTable routingTable;
 	private ForwardingTable forwardingTable;
@@ -80,6 +89,7 @@ public class UIManager
 		this.factory = factory;
 		soundPlayer = this.factory.getSoundPlayer();
 		ll2pList = this.factory.getLL2P();
+		ll3pList = this.factory.getLL3P();
 		ll1demon = this.factory.getDemon1();
 		routingTable = this.factory.getRouteTable();
 		forwardingTable = this.factory.getForwardingTable();
@@ -115,6 +125,19 @@ public class UIManager
 		crc16ccitt.setText(ll2p.getCRCString());
 		payloadLL2P.setText(ll2p.getPayloadString());
 	} // end public method updateLL2PDisplay
+	
+	public void updateLL3PDisplay()
+	{
+		ll3p = ll3pList.get(ll3pList.size() - 1);
+		ll3p.getPacketBytes(); // this makes it calculate the checksum
+		sourceLL3P.setText(ll3p.getSourceLL3P_IPaddressString());
+		destinationLL3P.setText(ll3p.getDestinationLL3P_IPaddressString());
+		typeFieldLL3P.setText(ll3p.getTypeFieldString());
+		id.setText(ll3p.getIdentifierString());
+		ttl.setText(ll3p.getTTLstring());
+		checksum.setText(ll3p.getChecksumString());
+		payloadLL3P.setText(ll3p.getPayloadString());
+	} // end public method updateLL3PDisplay
 	
 	public View.OnClickListener addAdjacency = new View.OnClickListener()
 	{
@@ -202,6 +225,14 @@ public class UIManager
 		typeFieldLL2P = (TextView) parentActivity.findViewById(R.id.textViewTypeFieldLL2P);
 		crc16ccitt = (TextView) parentActivity.findViewById(R.id.textViewCRC16CCITT);
 		payloadLL2P = (TextView) parentActivity.findViewById(R.id.textViewPayloadLL2P);
+		
+		sourceLL3P = (TextView) parentActivity.findViewById(R.id.textViewSourceLL3P);
+		destinationLL3P = (TextView) parentActivity.findViewById(R.id.textViewDestinationLL3P);
+		typeFieldLL3P = (TextView) parentActivity.findViewById(R.id.textViewTypeFieldLL3P);
+		id = (TextView) parentActivity.findViewById(R.id.textViewIDLL3P);
+		ttl = (TextView) parentActivity.findViewById(R.id.textViewTimeToLive);
+		checksum = (TextView) parentActivity.findViewById(R.id.textViewChecksumResult);
+		payloadLL3P = (TextView) parentActivity.findViewById(R.id.textViewPayloadLL3P);
 		
 		listViewForLL1Demon = (ListView) parentActivity.findViewById(R.id.listViewAdjacencyTable);
 		listViewForRoutingTable = (ListView) parentActivity.findViewById(R.id.listViewRoutingTable);

@@ -44,6 +44,7 @@ public class MainActivity extends Activity
 			uiManager = myFactory.getUIManager();
 			demon = myFactory.getDemon1();
 			uiManager.updateLL2PDisplay();
+			uiManager.updateLL3PDisplay();
 			goAhead = true;
 		} // end if
 	} // end override protected method onCreate

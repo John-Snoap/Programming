@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Neutral_Fill">#FFEAA6</color>
+    <color name="Neutral_Font">#9C6420</color>
+    <color name="Blue_Fill">#87CFFA</color>
+    <color name="Blue_Font">#1B1A6B</color>
+    <color name="Red_Fill">#FFC7CE</color>
+    <color name="Red_Font">#9C0010</color>
+    <color name="red">#ff0000</color>
+    <color name="blue">#0000ff</color>
+    <color name="green">#00ff00</color>
+    <color name="parchment">#ffff99</color>
+    <color name="skyBlue">#99ffff</color>
+    <color name="darkRed">#bb0000</color>
+    <color name="white">#ffffff</color>
+    <color name="lightGrey">#dddddd</color>
+    <color name="black">#000000</color>
+    <color name="lightBlue">#ccffff</color>
+    <color name="orange">#ffcc66</color>
+    <color name="grey">#666665</color>
+    <color name="oceanBlue">#3399ff</color>
+    <color name="yellow">#ffff00</color>
+    <color name="darkGreen">#007700</color>
+    <color name="burgundy">#800000</color>
+    
+</resources>

@@ -6,14 +6,14 @@
     <string name="IPAddress">&quot;IP Address:  &quot;</string>
     <string name="ShowIPAddress">&quot;Show IP Address&quot;</string>
     <string name="SendLL2PFrame">&quot;Send LL2P Frame&quot;</string>
-    <string name="Destination_LL2P_MAC">&quot;Destiny LL2P MAC:  &quot;</string>
-    <string name="Source_LL2P_MAC">&quot;Source LL2P MAC:  &quot;</string>
-    <string name="Type_Field">&quot;Type Field:  &quot;</string>
+    <string name="Destination_LL2P_MAC">&quot;Destiny 2 MAC:  &quot;</string>
+    <string name="Source_LL2P_MAC">&quot;Source 2 MAC:  &quot;</string>
+    <string name="Type_Field">&quot;Type:  &quot;</string>
     <string name="CRC16CCITT">&quot;CRC16CCITT:  &quot;</string>
     <string name="Payload">&quot;Payload:  &quot;</string>
     <string name="turnOnWifi">&quot;You need to turn on WiFi before this app will work&quot;</string>
-    <string name="FFFFFF">FFFFFF</string>
-    <string name="FFFF">FFFF</string>
+    <string name="FFFFFF">&quot;FFFFFF&quot;</string>
+    <string name="FFFF">&quot;FFFF&quot;</string>
     <string name="LL2P_MAC">&quot;LL2P MAC:  &quot;</string>
     <string name="Add">&quot;Add&quot;</string>
     <string name="IP_Example">&quot;10.0.0.0&quot;</string>
@@ -21,5 +21,11 @@
     <string name="Echo_Payload_Hint">&quot;Echo&quot;</string>
     <string name="Routing_Table">&quot;Routing Table&quot;</string>
     <string name="Forwarding_Table">&quot;Forwarding Table&quot;</string>
+    <string name="FF">&quot;FF&quot;</string>
+    <string name="Source_LL3P_IP">&quot;Source 3 IP:  &quot;</string>
+    <string name="Destination_LL3P_IP">&quot;Destiny 3 IP:  &quot;</string>
+    <string name="Identifier">&quot;ID:  &quot;</string>
+    <string name="Time_To_Live">&quot;TTL:  &quot;</string>
+    <string name="Checksum16Bit1sComplement">&quot;16 Bit 1s Comp Checksum:  &quot;</string>
 
 </resources>

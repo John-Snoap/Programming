@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/messengerLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Blue_Font"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/messengerTitleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Lab_Messenger"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/orange" />
+
+    <Spinner
+        android:id="@+id/nameSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/name_prompt" />
+
+    <ListView
+        android:id="@+id/recievedMessagesListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.91"
+        android:divider="@color/orange"
+        android:dividerHeight="1dip"
+        android:textColor="@color/black" >
+
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/messengerSendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Send" />
+
+        <EditText
+            android:id="@+id/messengerEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.06"
+            android:hint="@string/Enter_Message" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/messengerExitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Exit" />
+    </LinearLayout>
+
+</LinearLayout>
